@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Description:
+  = @treasure.description
+
+= link_to 'Edit', edit_treasure_path(@treasure)
+\|
+= link_to 'Back', treasures_path
