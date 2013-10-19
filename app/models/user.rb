@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :treasure_votes
+
   def self.from_omniauth(auth)
     where(auth.slice("provider", "uid")).first || create_with_omniauth(auth)
   end
@@ -17,5 +19,9 @@ class User < ActiveRecord::Base
 
   def username
     guest ? 'Guest' : name
+  end
+
+  def can_vote_for?(treasure)
+    treasure_votes.build(value: 1, treasure: treasure).valid?
   end
 end
