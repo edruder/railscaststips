@@ -47,5 +47,9 @@ end
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
-    gem 'rspec-rails', '~> 2.0'
+  gem 'rspec-rails', '~> 2.0'
+  gem 'shoulda-matchers', require: false
+  gem 'factory_girl_rails'
+
+  gem 'pry'
 end
