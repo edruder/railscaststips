@@ -32,6 +32,49 @@ describe TreasuresController do
         assigns(:treasures).should eq([@treasure_with_tag1])
       end
     end
+
+    context 'with query param' do
+      before :each do
+        @treasure1 = FactoryGirl.create :treasure,
+          description: "How to use => to preserve context in coffeescript function", 
+          tag_list: "coffeescript, javascript, rails"
+        @treasure2 = FactoryGirl.create :treasure, 
+          description: "An awesome tip hidden inside railscast #343, it shows how to use full text search with text parameter", 
+          tag_list: "full text search, rails, postgresql"
+        @treasure3 = FactoryGirl.create :treasure, 
+          description: "Railscast #371 has an interesting note about how to disable parameters in minute 03:45.", 
+          tag_list: "strong parameters, rails 4, ruby"
+        @treasure4 = FactoryGirl.create :treasure, 
+          description: "Some weird description", 
+          tag_list: "tag1, tag2, 4"
+      end
+
+      it 'should show 3 result for "rails"' do
+        get :index, { query: "rails"}, valid_session
+        assigns(:treasures).should have(3).items
+      end
+
+      it 'should show 4 result for "javascript"' do
+        get :index, { query: "javascript"}, valid_session
+        assigns(:treasures).should have(1).items
+      end
+
+      it 'should show 3 result for "how to use"' do
+        get :index, { query: "how to use"}, valid_session
+        assigns(:treasures).should have(2).items
+      end
+
+      it 'should show 1 result for "coffeescript"' do
+        get :index, { query: "coffeescript"}, valid_session
+        assigns(:treasures).should have(1).items
+      end
+
+      it 'should show 2 result for "parameters"' do
+        get :index, { query: "parameters"}, valid_session
+        assigns(:treasures).should have(2).items
+      end
+
+    end
   end
 
   describe "GET show" do

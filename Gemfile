@@ -47,6 +47,9 @@ gem 'unicorn'
 # Use Capistrano for deployment
 gem 'capistrano', group: :development
 
+# Use pg_search for full text search
+gem 'pg_search'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
