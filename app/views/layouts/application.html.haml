@@ -33,9 +33,12 @@
                   = link_to 'Contact', '#'
                 %li
                   - if current_user
-                    = "Hello #{current_user.name}!"
+                    = "Hello #{current_user.username}!"
+                    - if current_user.guest
+                      = link_to "Sign in with Github", "/auth/github"
                     = link_to 'Sign out', signout_path
                   - else
+                    = link_to 'Try it!', tryit_path
                     = link_to "Sign in with Github", "/auth/github"
 
     = yield :main_search
