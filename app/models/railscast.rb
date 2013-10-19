@@ -30,4 +30,8 @@ class Railscast < ActiveRecord::Base
   def generate_basename
     "#{position}-#{permalink}"
   end
+
+  def complete_name
+    "#{position} #{name}"
+  end
 end

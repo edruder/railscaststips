@@ -8,7 +8,7 @@
 
   .form-group
     = f.label :railscast
-    = f.collection_select :railscast_id, @railscasts, :id, :name, { prompt: 'Select Railscast'}, style: "width:100%"
+    = f.collection_select :railscast_id, @railscasts, :id, :complete_name, { prompt: 'Select Railscast'}, style: "width:100%"
   .form-group
     = f.label :description
     = f.text_area :description, class: 'form-control'
