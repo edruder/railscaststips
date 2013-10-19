@@ -10,4 +10,12 @@ module ApplicationHelper
     link_to tag, "/tags/#{tag}"
   end
 
+  def external_url_for_treasure treasure
+    File.join(
+      'http://',
+      request.host_with_port,
+      treasure_path(treasure)
+    )
+  end
+
 end
