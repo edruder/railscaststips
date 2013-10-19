@@ -1,18 +1,20 @@
-%h4.subpage-title Listing treasures
+%section
+  .container
+    %h4.subpage-title Listing treasures
 
-- @treasures.each_slice(3) do |treasures|
-  .row
-    - treasures.each do |treasure|
-      .col-md-3
-        .thumbnail
-          = link_to image_tag(treasure.railscast.image_url), treasure
-          .caption
-            %h4= treasure.railscast.name
-            %p= treasure.description
-            %p
-              = link_to treasure, class: 'btn btn-warning btn-sm btn-block' do
-                %i.icon-play-sign
-                Watch treasure
+    - @treasures.each_slice(3) do |treasures|
+      .row
+        - treasures.each do |treasure|
+          .col-md-3
+            .thumbnail
+              = link_to image_tag(treasure.railscast.image_url), treasure
+              .caption
+                %h4= treasure.railscast.name
+                %p= treasure.description
+                %p
+                  = link_to treasure, class: 'btn btn-warning btn-sm btn-block' do
+                    %i.icon-play-sign
+                    Watch treasure
 
 
-= link_to 'New Treasure', new_treasure_path
+    = link_to 'New Treasure', new_treasure_path
