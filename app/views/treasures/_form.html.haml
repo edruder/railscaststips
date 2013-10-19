@@ -8,7 +8,7 @@
 
   .form-group
     = f.label :railscast
-    = f.collection_select :railscast_id, @railscasts, :id, :name, { prompt: 'Select Railscast'}, class: 'form-control'
+    = f.collection_select :railscast_id, @railscasts, :id, :name, { prompt: 'Select Railscast'}, style: "width:100%"
   .form-group
     = f.label :description
     = f.text_area :description, class: 'form-control'
@@ -17,7 +17,7 @@
     = f.time_select :time, options: { discard_hour: true, include_seconds: true }, html_options: { class: 'form-control' }
   .form-group
     = f.label :tag_list
-    = f.text_field :tag_list, class: 'form-control'
+    = f.text_field :tag_list, style: "width:100%", data: { tags: "#{available_tags}" }
   .actions
     .pull-right
       = f.submit 'Save', class: 'btn btn-flat flat-inverse btn-rounded'

@@ -14,4 +14,5 @@
  *= require font-awesome/font-awesome-ie7
  *= require_directory ./flatpoint
  *= require_directory .
+ *= require select2
  */
