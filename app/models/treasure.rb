@@ -6,4 +6,7 @@ class Treasure < ActiveRecord::Base
 
   # == Associations ==
   belongs_to :railscast
+
+  # == Tags ==
+  acts_as_taggable
 end

@@ -17,7 +17,7 @@
                 %span.icon-bar
                 %span.icon-bar
                 %span.icon-bar
-              %a.navbar-brand{:href => "index.html"}
+              = link_to root_path, class: 'navbar-brand' do
                 Rails
                 %span Casts.
             / Collect the nav links, forms, and other content for toggling
@@ -37,7 +37,11 @@
         / /.navbar
       / /.header
 
-    = yield
+    = yield :main_search
+
+    %section
+      .container
+        = yield
 
     %footer.footer-1
       .container
