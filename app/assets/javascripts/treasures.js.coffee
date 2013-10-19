@@ -2,9 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
-  loadTreasureForm() if $('#treasure_railscast_id').length
-
 $(window).load ->
   loadVideo() if $('#railscast_video').length
 
@@ -18,3 +15,7 @@ loadTreasureForm = ->
   $('#treasure_railscast_id').select2()
   tags = $('#treasure_tag_list').data('tags')
   $('#treasure_tag_list').select2({ tags: tags })
+
+$(document).ready(loadTreasureForm)
+$(document).on('page:load', loadTreasureForm)
+

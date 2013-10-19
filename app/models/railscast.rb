@@ -19,7 +19,6 @@ class Railscast < ActiveRecord::Base
   end
 
   def image_url
-    return '' if pro or revised
     IMAGE_BASE_URL + generate_basename + '.png'
   end
 
@@ -28,6 +27,16 @@ class Railscast < ActiveRecord::Base
   end
 
   def generate_basename
-    "#{position}-#{permalink}"
+    "#{formatted_position}-#{permalink}"
+  end
+
+  def complete_name
+    "#{formatted_position} - #{name}"
+  end
+
+  private # ========================= PRIVATE =========================== #
+
+  def formatted_position
+    "%03d" % position
   end
 end
