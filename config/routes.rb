@@ -1,6 +1,8 @@
 R13Team376::Application.routes.draw do
+  get 'tags/:tag', to: 'treasures#index', as: :tag
   resources :railscasts
   resources :treasures
+
 
   get "home/index"
 

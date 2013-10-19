@@ -5,7 +5,8 @@ describe TreasuresController do
   # This should return the minimal set of attributes required to create a valid
   # Treasure. As you add validations to Treasure, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "description" => "MyText" } }
+  let(:valid_attributes) { { "description" => "MyText", "time" => Time.now } }
+  
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -17,6 +18,19 @@ describe TreasuresController do
       treasure = Treasure.create! valid_attributes
       get :index, {}, valid_session
       assigns(:treasures).should eq([treasure])
+    end
+
+    context 'with tag param' do
+      before :each do
+        @treasure_with_tag1 = FactoryGirl.create :treasure, tag_list: "tag1"
+        FactoryGirl.create_list :treasure, 2, tag_list: "tag2, tag3"
+        FactoryGirl.create_list :treasure, 2, tag_list: "tag3, tag4"
+      end
+
+      it 'should return treasures tagged as tag1' do
+        get :index, { tag: "tag1"}, valid_session
+        assigns(:treasures).should eq([@treasure_with_tag1])
+      end
     end
   end
 
@@ -64,7 +78,7 @@ describe TreasuresController do
 
       context 'with tags' do
         it "creates a new Treasure with tags tag1, tag2, tag3" do
-          post :create, { treasure: { description: "Some Description", tag_list: "tag1, tag2, tag3" } }, valid_session
+          post :create, { treasure: valid_attributes.merge( { tag_list: "tag1, tag2, tag3" } ) }, valid_session
           assigns(:treasure).should be_persisted
           assigns(:treasure).tag_list.should eq(["tag1", "tag2", "tag3"])
         end

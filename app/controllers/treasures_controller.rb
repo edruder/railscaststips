@@ -5,7 +5,11 @@ class TreasuresController < ApplicationController
   # GET /treasures
   # GET /treasures.json
   def index
-    @treasures = Treasure.all
+    if params[:tag]
+      @treasures = Treasure.tagged_with(params[:tag])
+    else
+      @treasures = Treasure.all
+    end
   end
 
   # GET /treasures/1
