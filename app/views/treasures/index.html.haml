@@ -5,7 +5,7 @@
     - treasures.each do |treasure|
       .col-md-3
         .thumbnail
-          = image_tag treasure.railscast.image_url
+          = link_to image_tag(treasure.railscast.image_url), treasure
           .caption
             %h4= treasure.railscast.name
             %p= treasure.description
