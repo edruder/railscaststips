@@ -4,11 +4,13 @@ describe RailscastsController do
 
   let(:valid_attributes) {
     {
-      url: "http://railscasts.com/episodes/1-caching-with-instance-variables.json",
+      url: "http://railscasts.com/episodes/1-caching-with-instance-variables.html",
       name: "Caching with Instance Variables",
       description: "Learn a quick way to improve performance. Just store the end result of an expensive command in an instance variable!",
       pro: '1',
-      revised: '0'
+      revised: '0',
+      position: 1,
+      permalink: 'caching-with-instance-variables'
     }
   }
 

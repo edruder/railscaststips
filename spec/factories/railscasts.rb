@@ -5,5 +5,7 @@ FactoryGirl.define do
     url "http://railscasts.com/episodes/1-fixture.html"
     name "Fixture"
     description "A description"
+    position 10
+    permalink 'fixture'
   end
 end

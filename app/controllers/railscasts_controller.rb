@@ -69,6 +69,6 @@ class RailscastsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def railscast_params
-      params.require(:railscast).permit(:url, :name, :description)
+      params.require(:railscast).permit(:url, :name, :description, :pro, :revised, :duration, :position, :permalink)
     end
 end
