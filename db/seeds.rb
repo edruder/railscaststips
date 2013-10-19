@@ -10,5 +10,7 @@ require 'open-uri'
 Railscast.destroy_all
 result = JSON.parse(open("http://railscasts.com/episodes.json").read)
 result.each do |r|
-  Railscast.create! r.slice('url', 'name', 'description', 'pro', 'revised')
+  r.slice!('url', 'name', 'description', 'pro', 'revised')
+  r['url'].sub /json$/, 'html'
+  Railscast.create! r
 end
