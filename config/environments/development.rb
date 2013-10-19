@@ -27,3 +27,4 @@ R13Team376::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 end
+

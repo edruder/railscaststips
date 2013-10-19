@@ -1,0 +1,11 @@
+development:
+  key: be6471329d3c33ef9abd
+  secret: 773ba8505d038db07dccc1b5f3040f32c2b076ce
+
+test:
+  key: be6471329d3c33ef9abd
+  secret: 773ba8505d038db07dccc1b5f3040f32c2b076ce
+
+production:
+  key: be6471329d3c33ef9abd
+  secret: 773ba8505d038db07dccc1b5f3040f32c2b076ce
