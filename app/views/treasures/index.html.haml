@@ -1,6 +1,6 @@
 %h4.subpage-title Listing treasures
 
-- @treasures.each_slice(4) do |treasures|
+- @treasures.each_slice(3) do |treasures|
   .row
     - treasures.each do |treasure|
       = render "box", treasure: treasure
