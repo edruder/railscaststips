@@ -5,6 +5,8 @@
     %th Url
     %th Name
     %th Description
+    %th Pro
+    %th Revised
     %th
     %th
     %th
@@ -14,6 +16,8 @@
       %td= railscast.url
       %td= railscast.name
       %td= railscast.description
+      %td= railscast.pro
+      %td= railscast.revised
       %td= link_to 'Show', railscast
       %td= link_to 'Edit', edit_railscast_path(railscast)
       %td= link_to 'Destroy', railscast, :method => :delete, :data => { :confirm => 'Are you sure?' }
