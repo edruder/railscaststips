@@ -7,6 +7,9 @@ class Treasure < ActiveRecord::Base
   # == Associations ==
   belongs_to :railscast
 
+  # == Scopes ==
+  scope :related_treasures, -> (treasure) { where(railscast_id: treasure.railscast_id).where('treasures.id != ?', treasure.id) }
+
   # == Tags ==
   acts_as_taggable
 

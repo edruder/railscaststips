@@ -8,6 +8,7 @@ describe Railscast do
   it { should validate_presence_of :permalink }
   it { should validate_uniqueness_of :url }
   it { should validate_uniqueness_of :name }
+  it { should have_many :treasures }
 
   describe 'parse_name_from_path' do
     it 'returns basename' do

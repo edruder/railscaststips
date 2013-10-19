@@ -13,4 +13,8 @@ module TreasuresHelper
     link_to tag, '#'
   end
 
+  def found_at time
+    time.strftime "%M:%S"
+  end
+
 end

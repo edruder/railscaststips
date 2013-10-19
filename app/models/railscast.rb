@@ -3,6 +3,9 @@ class Railscast < ActiveRecord::Base
   # == Constants ==
   VIDEO_BASE_URL = 'http://media.railscasts.com/assets/episodes/videos/'
 
+  # == Relations ==
+  has_many :treasures
+
   # == Validations ==
   validates :url, :name, :description, :position, :permalink, presence: true
   validates :url, :name, uniqueness: true

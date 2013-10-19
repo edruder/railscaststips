@@ -26,11 +26,30 @@
       %li
         %h6 Found at
         .project-terms
-          = @treasure.time.strftime "%M:%S"
+          = found_at @treasure.time
       %li
         %h6 Link to episode
         .project-terms
           = link_to @treasure.railscast.name, @treasure.railscast.url, target: 'blank'
+
+- if Treasure.related_treasures(@treasure).count > 0
+  .panel.panel-default
+    .panel-heading Other treasures found in this Railscast
+
+    %table.table.table-hover
+      %thead
+        %tr
+          %th Tags
+          %th Description
+          %th Found at
+      %tbody
+        - Treasure.related_treasures(@treasure).each do |treasure|
+          %tr
+            %td= treasure.tag_list
+            %td= treasure.description
+            %td
+              = link_to found_at(treasure.time), treasure
+
 
 = link_to 'Edit', edit_treasure_path(@treasure)
 \|
