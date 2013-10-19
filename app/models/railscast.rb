@@ -35,6 +35,8 @@ class Railscast < ActiveRecord::Base
     "#{formatted_position} - #{name}"
   end
 
+  private # ========================= PRIVATE =========================== #
+
   def formatted_position
     "%03d" % position
   end
