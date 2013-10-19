@@ -15,15 +15,11 @@
     .row
       .col-md-12.wrapper-1
         %h5.subpage-title Tips
-      #accordion.panel-group
-        - @railscast.treasures.each do |treasure|
-          .panel.panel-default
-            .panel-heading
-              %h4.panel-title
-                =link_to treasure.description, treasure, class: 'accordion-toggle.collapsed', data: { toggle: 'collapse', parent: '#accordion', href:"#collapse#{treasure.id}"}
-            .collapse.panel-collapse.collapse{id: "collapse#{treasure.id}"}
-              .panel-body
-                %h5 Tags
+        .widget.categories
+          %ul.widget-list
+            - @railscast.treasures.each do |treasure|
+              %li
+                = link_to treasure.description, treasure
                 = tags_for_treasure treasure
-
-    = link_to 'Add Tip', new_treasure_path(railscast_id: @railscast.id), class: 'btn btn-success'
+    - if current_user
+      = link_to 'Add Tip', new_treasure_path(railscast_id: @railscast.id), class: 'btn btn-success'
