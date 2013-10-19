@@ -1,7 +1,7 @@
 class Treasure < ActiveRecord::Base
   
   # == Validations ==
-  validates :description, presence: true
+  validates :description, :time, presence: true
   validates_length_of :description, maximum: 150, allow_blank: false
 
   # == Associations ==
@@ -12,7 +12,6 @@ class Treasure < ActiveRecord::Base
 
   # == Methods ==
   def at_second
-    # TODO: actually calculate number of seconds based on time attribute
-    30
+    time.min * 60 + time.sec
   end
 end
