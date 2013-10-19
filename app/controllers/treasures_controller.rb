@@ -70,6 +70,6 @@ class TreasuresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def treasure_params
-      params.require(:treasure).permit(:description, :time, :tag_list)
+      params.require(:treasure).permit(:description, :railscast_id, :time, :tag_list)
     end
 end
