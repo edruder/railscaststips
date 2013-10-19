@@ -11,6 +11,6 @@ Railscast.destroy_all
 result = JSON.parse(open("http://railscasts.com/episodes.json").read)
 result.each do |r|
   r.slice!('url', 'name', 'description', 'pro', 'revised')
-  r['url'].sub /json$/, 'html'
+  r['url'].sub! /json$/, 'html'
   Railscast.create! r
 end
