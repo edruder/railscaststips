@@ -10,8 +10,7 @@
  *
  *= require_self
  *= require_directory ./bootstrap
- *= require font-awesome/font-awesome
- *= require font-awesome/font-awesome-ie7
+ *= require font-awesome
  *= require_directory ./flatpoint
  *= require_directory .
  *= require select2

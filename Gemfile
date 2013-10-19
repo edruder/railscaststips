@@ -38,6 +38,8 @@ gem 'acts-as-taggable-on'
 
 gem 'select2-rails'
 
+gem 'font-awesome-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
