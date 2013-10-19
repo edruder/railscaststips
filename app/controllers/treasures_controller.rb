@@ -1,10 +1,15 @@
 class TreasuresController < ApplicationController
   before_action :set_treasure, only: [:show, :edit, :update, :destroy]
+  before_action :load_railscasts, only: [:new, :create, :edit, :update]
 
   # GET /treasures
   # GET /treasures.json
   def index
-    @treasures = Treasure.all
+    if params[:tag]
+      @treasures = Treasure.tagged_with(params[:tag])
+    else
+      @treasures = Treasure.all
+    end
   end
 
   # GET /treasures/1
@@ -14,7 +19,6 @@ class TreasuresController < ApplicationController
 
   # GET /treasures/new
   def new
-    @railscasts = Railscast.all
     @treasure = Treasure.new
   end
 
@@ -66,6 +70,10 @@ class TreasuresController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_treasure
       @treasure = Treasure.find(params[:id])
+    end
+
+    def load_railscasts
+      @railscasts = Railscast.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

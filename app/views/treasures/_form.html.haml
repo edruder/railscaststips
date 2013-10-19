@@ -6,17 +6,19 @@
         - @treasure.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .form-group
     = f.label :railscast
-    = f.collection_select :railscast_id, @railscasts, :id, :name, { prompt: 'Select Railscast'}
-  .field
+    = f.collection_select :railscast_id, @railscasts, :id, :name, { prompt: 'Select Railscast'}, class: 'form-control'
+  .form-group
     = f.label :description
-    = f.text_area :description
-  .field
+    = f.text_area :description, class: 'form-control'
+  .form-group
     = f.label :time
-    = f.time_select :time, discard_hour: true, include_seconds: true 
-  .field
+    = f.time_select :time, options: { discard_hour: true, include_seconds: true }, html_options: { class: 'form-control' }
+  .form-group
     = f.label :tag_list
-    = f.text_field :tag_list 
+    = f.text_field :tag_list, class: 'form-control'
   .actions
-    = f.submit 'Save'
+    .pull-right
+      = f.submit 'Save', class: 'btn btn-flat flat-inverse btn-rounded'
+      = link_to 'Cancel', :back , class: 'btn btn-warning'
