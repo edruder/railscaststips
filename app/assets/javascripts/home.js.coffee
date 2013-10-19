@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
+loadTwitterFeed = ->
   return unless $('ul#tweets').length
   $.getJSON "/tweets", (data) ->
     tweets = []
@@ -25,3 +25,6 @@ urlForTweet = (tweet) ->
 
 dateSubstring = (date) ->
   date.substr(0, date.indexOf(' +'))
+
+$(document).ready(loadTwitterFeed)
+$(document).on('page:load', loadTwitterFeed)
