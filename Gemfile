@@ -45,7 +45,7 @@ gem 'select2-rails'
 gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano', group: :development
+gem 'capistrano', '~> 2.15', group: :development
 
 # Use pg_search for full text search
 gem 'pg_search'
