@@ -1,67 +1,67 @@
-%p#notice= notice
-
-%h4.subpage-title
-  = @treasure.railscast.name
-
-.row
-  .col-md-12
-    %video#railscast_video.video-js.vjs-default-skin{ controls: "", poster: "#{image_path('video/poster.jpg')}", :preload => "auto", "data-setup" => '{"example_option":true}', width: "960", height: '600', "data-time" => "#{@treasure.at_second}" }
-      %source{ src: "#{@treasure.railscast.video_url}", :type => "video/mp4"}
-
-.row
-  .col-md-8.item-description.wrapper-1
-    .row
-      .col-md-12
-        %h5.subpage-title Description
-        = @treasure.description
+%section
+  .container
+    %h4.subpage-title
+      = @treasure.railscast.name
 
     .row
       .col-md-12
-        %h5 Tags
-        = tags_for_treasure @treasure
+        %video#railscast_video.video-js.vjs-default-skin{ controls: "", poster: "#{image_path('video/poster.jpg')}", :preload => "auto", "data-setup" => '{"example_option":true}', width: "960", height: '600', "data-time" => "#{@treasure.at_second}" }
+          %source{ src: "#{@treasure.railscast.video_url}", :type => "video/mp4"}
 
-  .col-md-4.item-details.wrapper-1
-    %h5.subpage-title Details
-    %ul.project-details-list
-      %li
-        %h6 Found at
-        .project-terms
-          = found_at @treasure.time
-      %li
-        %h6 Link to episode
-        .project-terms
-          = link_to @treasure.railscast.name, @treasure.railscast.url, target: 'blank'
+    .row
+      .col-md-8.item-description.wrapper-1
+        .row
+          .col-md-12
+            %h5.subpage-title Description
+            = @treasure.description
 
-      %li
-        %h6 Share via twitter
-        .project-terms
-          = render 'twitter_share_button', treasure: @treasure
+        .row
+          .col-md-12
+            %h5 Tags
+            = tags_for_treasure @treasure
 
-- if current_user && current_user.can_vote_for?(@treasure)
-  |
-  = link_to "up", vote_treasure_path(@treasure, value: 1), method: "post"
-  |
-  = link_to "down", vote_treasure_path(@treasure, value: -1), method: "post"
+      .col-md-4.item-details.wrapper-1
+        %h5.subpage-title Details
+        %ul.project-details-list
+          %li
+            %h6 Found at
+            .project-terms
+              = found_at @treasure.time
+          %li
+            %h6 Link to episode
+            .project-terms
+              = link_to @treasure.railscast.name, @treasure.railscast.url, target: 'blank'
 
-- if Treasure.related_treasures(@treasure).count > 0
-  .panel.panel-default
-    .panel-heading Other treasures found in this Railscast
+          %li
+            %h6 Share via twitter
+            .project-terms
+              = render 'twitter_share_button', treasure: @treasure
 
-    %table.table.table-hover
-      %thead
-        %tr
-          %th Tags
-          %th Description
-          %th Found at
-      %tbody
-        - Treasure.related_treasures(@treasure).each do |treasure|
-          %tr
-            %td= treasure.tag_list
-            %td= treasure.description
-            %td
-              = link_to found_at(treasure.time), treasure
+    - if current_user && current_user.can_vote_for?(@treasure)
+      |
+      = link_to "up", vote_treasure_path(@treasure, value: 1), method: "post"
+      |
+      = link_to "down", vote_treasure_path(@treasure, value: -1), method: "post"
+
+    - if Treasure.related_treasures(@treasure).count > 0
+      .panel.panel-default
+        .panel-heading Other treasures found in this Railscast
+
+        %table.table.table-hover
+          %thead
+            %tr
+              %th Tags
+              %th Description
+              %th Found at
+          %tbody
+            - Treasure.related_treasures(@treasure).each do |treasure|
+              %tr
+                %td= treasure.tag_list
+                %td= treasure.description
+                %td
+                  = link_to found_at(treasure.time), treasure
 
 
-= link_to 'Edit', edit_treasure_path(@treasure)
-\|
-= link_to 'Back', treasures_path
+    = link_to 'Edit', edit_treasure_path(@treasure)
+    \|
+    = link_to 'Back', treasures_path
