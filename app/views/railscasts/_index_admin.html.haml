@@ -1,0 +1,31 @@
+%h1 Listing railscasts
+
+%table
+  %tr
+    %th Url
+    %th Name
+    %th Pro
+    %th Revised
+    %th Duration
+    %th Position
+    %th Permalink
+    %th
+    %th
+    %th
+
+  - @railscasts.each do |railscast|
+    %tr
+      %td= railscast.url
+      %td= railscast.name
+      %td= railscast.pro
+      %td= railscast.revised
+      %td= railscast.duration
+      %td= railscast.position
+      %td= railscast.permalink
+      %td= link_to 'Show', railscast
+      %td= link_to 'Edit', edit_railscast_path(railscast)
+      %td= link_to 'Destroy', railscast, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Railscast', new_railscast_path
