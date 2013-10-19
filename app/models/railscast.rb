@@ -15,12 +15,12 @@ class Railscast < ActiveRecord::Base
 
   def video_url
     return '' if pro or revised
-    VIDEO_BASE_URL + parse_name_from_path + '.mp4'
+    VIDEO_BASE_URL + generate_basename + '.mp4'
   end
 
   def image_url
     return '' if pro or revised
-    IMAGE_BASE_URL + parse_name_from_path + '.png'
+    IMAGE_BASE_URL + generate_basename + '.png'
   end
 
   def parse_name_from_path
