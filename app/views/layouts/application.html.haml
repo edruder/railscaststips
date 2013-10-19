@@ -55,9 +55,10 @@
                 %span Casts Tips.
               %p Many of the Rails developers have learned something with the Ryan Bates' RailsCasts, but one screencast has more knowledge that the title describe. This project is looking for contain this extra knowledge. And this application is a way to say "Thank you Ryan".
           .col-md-4
-            .widget.popular-posts
-              %h5.subpage-title Latest Tweets
-              %ul#tweets.recent-posts
+            - unless controller_name == 'treasures' and action_name == 'show'
+              .widget.popular-posts
+                %h5.subpage-title Latest Tweets
+                %ul#tweets.recent-posts
           .col-md-4
             .widget.tagcloud
               %h5.subpage-title Tags
