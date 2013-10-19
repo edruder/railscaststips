@@ -18,6 +18,19 @@ describe TreasuresController do
       get :index, {}, valid_session
       assigns(:treasures).should eq([treasure])
     end
+
+    context 'with tag param' do
+      before :each do
+        @treasure_with_tag1 = FactoryGirl.create :treasure, tag_list: "tag1"
+        FactoryGirl.create_list :treasure, 2, tag_list: "tag2, tag3"
+        FactoryGirl.create_list :treasure, 2, tag_list: "tag3, tag4"
+      end
+
+      it 'should return treasures tagged as tag1' do
+        get :index, { tag: "tag1"}, valid_session
+        assigns(:treasures).should eq([@treasure_with_tag1])
+      end
+    end
   end
 
   describe "GET show" do
