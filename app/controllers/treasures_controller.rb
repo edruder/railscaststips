@@ -14,6 +14,7 @@ class TreasuresController < ApplicationController
 
   # GET /treasures/new
   def new
+    @railscasts = Railscast.all
     @treasure = Treasure.new
   end
 
