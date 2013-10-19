@@ -1,12 +1,14 @@
 class Railscast < ActiveRecord::Base
 
-  # == constants ==
+  # == Constants ==
   VIDEO_BASE_URL = 'http://media.railscasts.com/assets/episodes/videos/'
 
   # == Validations ==
   validates :url, :name, :description, presence: true
+  validates :url, :name, uniqueness: true
 
-  # == methods ==
+  # == Methods ==
+
   def video_url
     return '' if pro or revised
     VIDEO_BASE_URL + parse_name_from_path + '.mp4'
@@ -15,5 +17,4 @@ class Railscast < ActiveRecord::Base
   def parse_name_from_path
     File.basename url, '.*'
   end
-
 end

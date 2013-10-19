@@ -3,7 +3,9 @@ class CreateRailscasts < ActiveRecord::Migration
     create_table :railscasts do |t|
       t.string :url
       t.string :name
-      t.string :description
+      t.text :description
+      t.boolean :railscasts, :pro, default: false
+      t.boolean :railscasts, :revised, default: false
 
       t.timestamps
     end
