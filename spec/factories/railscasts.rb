@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :railscast do
-    url "http://railscasts.com/episodes/1-fixture.html"
+    url "http://railscasts.com/episodes/10-fixture"
     name "Fixture"
     description "A description"
     position 10
