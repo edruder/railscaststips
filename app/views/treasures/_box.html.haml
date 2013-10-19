@@ -1,0 +1,12 @@
+.col-md-3
+  .thumbnail
+    = link_to image_tag(treasure.railscast.image_url), treasure
+    .caption
+      %span.title
+        %h4= treasure.railscast.name
+      %span.description
+        = treasure.description.truncate(90)
+      %p
+        = link_to treasure, class: 'btn btn-warning btn-sm btn-block' do
+          %i.icon-play-sign
+          Watch treasure

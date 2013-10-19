@@ -1,3 +1,21 @@
 // Place all the styles related to the treasures controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.thumbnail {
+  margin-bottom: 30px;
+}
+
+.title {
+  color: #1a1a1a;
+  height: 42px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.description {
+  color: #333333;
+  height: 61px;
+  display: block;
+  margin-bottom: 10px;
+}
