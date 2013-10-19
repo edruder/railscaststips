@@ -1,8 +1,17 @@
 %p#notice= notice
 
-%p
-  %b Description:
-  = @treasure.description
+%video#railscast_video.video-js.vjs-default-skin{ controls: "", poster: "#{image_path('video/poster.jpg')}", :preload => "auto", "data-setup" => '{"example_option":true}', width: "960", height: '600', "data-time" => "#{@treasure.at_second}" }
+  %source{ src: "#{@treasure.railscast.video_url}", :type => "video/mp4"}
+
+.row
+  .col-md-8.item-description.wrapper-1
+    %h5.subpage-title Description
+    = @treasure.description
+
+  .col-md-4.item-details.wrapper-1
+    %h5.subpage-title Details
+    Lorem Ipsum
+    = link_to @treasure.railscast.name, @treasure.railscast.url, target: 'blank'
 
 = link_to 'Edit', edit_treasure_path(@treasure)
 \|
