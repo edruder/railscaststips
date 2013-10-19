@@ -35,16 +35,19 @@ describe TreasuresController do
 
     context 'with query param' do
       before :each do
-        @treasure1 = FactoryGirl.create :treasure,
+        railscast = FactoryGirl.create :railscast
+        FactoryGirl.create :treasure,
           description: "How to use => to preserve context in coffeescript function", 
-          tag_list: "coffeescript, javascript, rails"
-        @treasure2 = FactoryGirl.create :treasure, 
+          tag_list: "coffeescript, javascript, rails",
+          railscast: railscast
+        FactoryGirl.create :treasure, 
           description: "An awesome tip hidden inside railscast #343, it shows how to use full text search with text parameter", 
-          tag_list: "full text search, rails, postgresql"
-        @treasure3 = FactoryGirl.create :treasure, 
+          tag_list: "full text search, rails, postgresql",
+          railscast: railscast
+        FactoryGirl.create :treasure, 
           description: "Railscast #371 has an interesting note about how to disable parameters in minute 03:45.", 
           tag_list: "strong parameters, rails 4, ruby"
-        @treasure4 = FactoryGirl.create :treasure, 
+        FactoryGirl.create :treasure, 
           description: "Some weird description", 
           tag_list: "tag1, tag2, 4"
       end
@@ -72,6 +75,16 @@ describe TreasuresController do
       it 'should show 2 result for "parameters"' do
         get :index, { query: "parameters"}, valid_session
         assigns(:treasures).should have(2).items
+      end
+
+      it 'should show 2 result for "Fixture"' do
+        get :index, { query: "Fixture"}, valid_session
+        assigns(:treasures).should have(2).items
+      end
+
+      it 'should show 2 result for "description"' do
+        get :index, { query: "description"}, valid_session
+        assigns(:treasures).should have(3).items
       end
 
     end
