@@ -67,3 +67,4 @@ end
 
 gem 'omniauth-github'
 gem 'whenever', require: false
+gem 'simple_form'
