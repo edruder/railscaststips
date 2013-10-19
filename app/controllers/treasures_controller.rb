@@ -14,6 +14,7 @@ class TreasuresController < ApplicationController
 
   # GET /treasures/new
   def new
+    @railscasts = Railscast.all
     @treasure = Treasure.new
   end
 
@@ -69,6 +70,6 @@ class TreasuresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def treasure_params
-      params.require(:treasure).permit(:description)
+      params.require(:treasure).permit(:description, :railscast_id, :time, :tag_list)
     end
 end

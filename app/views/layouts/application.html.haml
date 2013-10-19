@@ -17,7 +17,7 @@
                 %span.icon-bar
                 %span.icon-bar
                 %span.icon-bar
-              %a.navbar-brand{:href => "index.html"}
+              = link_to root_path, class: 'navbar-brand' do
                 Rails
                 %span Casts.
             / Collect the nav links, forms, and other content for toggling
@@ -31,13 +31,18 @@
                   = link_to 'FAQ', '#'
                 %li
                   = link_to 'Contact', '#'
-              / /.nav
-            / /.navbar-collapse
-          / /.container
-        / /.navbar
-      / /.header
+                %li
+                  - if current_user
+                    = "Hello #{current_user.name}!"
+                    = link_to 'Sign out', signout_path
+                  - else
+                    = link_to "Sign in with Github", "/auth/github"
 
-    = yield
+    = yield :main_search
+
+    %section
+      .container
+        = yield
 
     %footer.footer-1
       .container
