@@ -15,5 +15,8 @@
   .field
     = f.label :time
     = f.time_select :time, discard_hour: true, include_seconds: true 
+  .field
+    = f.label :tag_list
+    = f.text_field :tag_list 
   .actions
     = f.submit 'Save'
