@@ -1,4 +1,7 @@
 R13Team376::Application.routes.draw do
+  resources :railscasts
+  resources :treasures
+
   get "home/index"
   
   root 'home#index'
