@@ -17,5 +17,11 @@ module ApplicationHelper
       treasure_path(treasure)
     )
   end
+  
+  def twitter_url_from_treasure treasure
+    base_url = 'https://twitter.com/share?'
+    params = { url: external_url_for_treasure(treasure), via: 'railscaststips', text: "I've learned new rails tricks from #{external_url_for_treasure(treasure)}" }
+    base_url + params.to_query
+  end
 
 end
