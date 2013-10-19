@@ -1,21 +1,4 @@
-%p#notice= notice
-
-%p
-  %b Url:
-  = @railscast.url
-%p
-  %b Name:
-  = @railscast.name
-%p
-  %b Description:
-  = @railscast.description
-%p
-  %b Pro:
-  = @railscast.pro
-%p
-  %b Revised:
-  = @railscast.revised
-
-= link_to 'Edit', edit_railscast_path(@railscast)
-\|
-= link_to 'Back', railscasts_path
+- if current_user and current_user.admin?
+  = render 'show_admin'
+- else
+  = render 'show_user'

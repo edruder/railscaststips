@@ -26,7 +26,7 @@
                 %li.active
                   = link_to 'Home', '#'
                 %li
-                  = link_to 'Videos', '#'
+                  = link_to 'RailsCasts', railscasts_path
                 %li
                   = link_to 'FAQ', '#'
                 - if current_user
@@ -52,17 +52,12 @@
             .widget.about-us
               %span.footer-brand
                 Rails
-                %span Casts Hidden Treasures.
-              %p Many of the Rails developers have learned something with the Ryan Bates' RailsCasts, but one screencast has many knowledge that the title describe. This project is looking for contain this extra knowledge. And this application is a way to say "Thank you" to Ryan.
+                %span Casts Tips.
+              %p Many of the Rails developers have learned something with the Ryan Bates' RailsCasts, but one screencast has more knowledge that the title describe. This project is looking for contain this extra knowledge. And this application is a way to say "Thank you Ryan".
           .col-md-4
             .widget.popular-posts
-              %h5.subpage-title Popular Videos
-              %ul.recent-posts
-                %li
-                  = image_tag 'rails-logo.png', alt: "Post Image"
-                  %h5
-                    = link_to 'The Ultimate Guide to Adjustment Layers – Vibrance', '#'
-                    %small Posted July 20, 2013
+              %h5.subpage-title Latest Tweets
+              %ul#tweets.recent-posts
           .col-md-4
             .widget.tagcloud
               %h5.subpage-title Tags
