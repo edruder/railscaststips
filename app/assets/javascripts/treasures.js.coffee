@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(window).load ->
+  return unless $("#railscast_video").length
   _V_("#railscast_video").ready ->
     loadVideo()
 
