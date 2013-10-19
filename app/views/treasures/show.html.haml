@@ -32,6 +32,11 @@
         .project-terms
           = link_to @treasure.railscast.name, @treasure.railscast.url, target: 'blank'
 
+      %li
+        %h6 Share via twitter
+        .project-terms
+          = render 'twitter_share_button', treasure: @treasure
+
 - if current_user && current_user.can_vote_for?(@treasure)
   |
   = link_to "up", vote_treasure_path(@treasure, value: 1), method: "post"

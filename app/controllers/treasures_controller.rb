@@ -26,6 +26,7 @@ class TreasuresController < ApplicationController
   # GET /treasures/new
   def new
     @treasure = Treasure.new
+    @treasure.railscast = Railscast.find_by_id(params[:railscast_id]) if params[:railscast_id]
   end
 
   # GET /treasures/1/edit
