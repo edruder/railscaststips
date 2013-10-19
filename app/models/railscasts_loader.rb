@@ -1,4 +1,4 @@
-class RailscastsUpdater
+class RailscastsLoader
   def initialize(railscasts_array)
     @railscasts_array = railscasts_array
   end
