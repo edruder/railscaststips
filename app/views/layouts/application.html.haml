@@ -29,16 +29,14 @@
                   = link_to 'Videos', '#'
                 %li
                   = link_to 'FAQ', '#'
-                %li
-                  = link_to 'Contact', '#'
-                %li
-                  - if current_user
-                    = "Hello #{current_user.username}!"
-                    - if current_user.guest
-                      = link_to "Sign in with Github", "/auth/github"
-                    = link_to 'Sign out', signout_path
-                  - else
+                - if current_user
+                  %li= "Hello #{current_user.username}!"
+                  %li= link_to "Sign in with Github", "/auth/github" if current_user.guest
+                  %li= link_to 'Sign out', signout_path
+                - else
+                  %li
                     = link_to 'Try it!', tryit_path
+                  %li
                     = link_to "Sign in with Github", "/auth/github"
 
     = yield :main_search
@@ -63,7 +61,7 @@
               %h5.subpage-title Popular Videos
               %ul.recent-posts
                 %li
-                  = image_tag 'snapshots/photo.jpg', alt: "Post Image"
+                  = image_tag 'rails-logo.png', alt: "Post Image"
                   %h5
                     = link_to 'The Ultimate Guide to Adjustment Layers – Vibrance', '#'
                     %small Posted July 20, 2013
