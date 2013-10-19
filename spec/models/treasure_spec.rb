@@ -23,7 +23,7 @@ describe Treasure do
       railscast = FactoryGirl.create :railscast
       @treasure = FactoryGirl.create :treasure, railscast: railscast
       FactoryGirl.create :treasure, railscast: railscast
-      @treasures = Treasure.related_treasures(@treasure).all
+      @treasures = Treasure.related_treasures(@treasure).to_a
     end
 
     it 'returns one treasure' do
