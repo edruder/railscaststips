@@ -6,7 +6,9 @@ describe RailscastsController do
     {
       url: "http://railscasts.com/episodes/1-caching-with-instance-variables.json",
       name: "Caching with Instance Variables",
-      description: "Learn a quick way to improve performance. Just store the end result of an expensive command in an instance variable!"
+      description: "Learn a quick way to improve performance. Just store the end result of an expensive command in an instance variable!",
+      pro: '1',
+      revised: '0'
     }
   }
 
