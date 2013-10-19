@@ -1,6 +1,6 @@
 %section
   .container
-    %h4.subpage-title Listing treasures
+    %h4.subpage-title Listing tip
 
     - @treasures.each_slice(3) do |treasures|
       .row
@@ -8,4 +8,4 @@
           = render "box", treasure: treasure
 
 
-    = link_to 'New Treasure', new_treasure_path
+    = link_to 'Add Tip', new_treasure_path

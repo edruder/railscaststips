@@ -6,12 +6,12 @@ describe TreasuresController do
   # Treasure. As you add validations to Treasure, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) { { "description" => "MyText", "time" => Time.now } }
-  
+
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # TreasuresController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { { user_id: FactoryGirl.create(:user, guest: true)} }
 
   describe "GET index" do
     it "assigns all treasures as @treasures" do
@@ -37,18 +37,18 @@ describe TreasuresController do
       before :each do
         railscast = FactoryGirl.create :railscast
         FactoryGirl.create :treasure,
-          description: "How to use => to preserve context in coffeescript function", 
+          description: "How to use => to preserve context in coffeescript function",
           tag_list: "coffeescript, javascript, rails",
           railscast: railscast
-        FactoryGirl.create :treasure, 
-          description: "An awesome tip hidden inside railscast #343, it shows how to use full text search with text parameter", 
+        FactoryGirl.create :treasure,
+          description: "An awesome tip hidden inside railscast #343, it shows how to use full text search with text parameter",
           tag_list: "full text search, rails, postgresql",
           railscast: railscast
-        FactoryGirl.create :treasure, 
-          description: "Railscast #371 has an interesting note about how to disable parameters in minute 03:45.", 
+        FactoryGirl.create :treasure,
+          description: "Railscast #371 has an interesting note about how to disable parameters in minute 03:45.",
           tag_list: "strong parameters, rails 4, ruby"
-        FactoryGirl.create :treasure, 
-          description: "Some weird description", 
+        FactoryGirl.create :treasure,
+          description: "Some weird description",
           tag_list: "tag1, tag2, 4"
       end
 
@@ -102,12 +102,12 @@ describe TreasuresController do
 
     it 'increments number of votes by one' do
       post :vote, value: 1, id: @treasure.id
-      @treasure.reload.votes.should == 1      
+      @treasure.reload.votes.should == 1
     end
 
     it 'decrements number of votes by one' do
       post :vote, value: -1, id: @treasure.id
-      @treasure.votes.should == -1      
+      @treasure.votes.should == -1
     end
   end
 
