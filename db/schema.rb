@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20131019184906) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "guest"
-    t.boolean  "admin"
+    t.boolean  "admin",      default: false
   end
 
 end
