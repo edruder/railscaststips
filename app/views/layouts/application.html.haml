@@ -52,34 +52,28 @@
             .widget.about-us
               %span.footer-brand
                 Rails
-                %span Casts.
-              %p Lorem ipsum dolor sit amet, no consequat ullamcorper nec, te commune constituto intellegebat eam. Soleat populo id nec. Est in altera vocibus, et vim iudico adolescens, mel no discere mediocritatem. Nec ei sale honestatis, graeco melius eruditi qui et, id nam mucius maiorum. Pri diceret ornatus cu, dico quas aliquando vix ea, vix impetus invidunt honestatis id. An his everti animal.
-            / /.about-us
-          / /.col-md-3
+                %span Casts Tips.
+              %p Many of the Rails developers have learned something with the Ryan Bates' RailsCasts, but one screencast has more knowledge that the title describe. This project is looking for contain this extra knowledge. And this application is a way to say "Thank you Ryan".
           .col-md-4
             .widget.popular-posts
               %h5.subpage-title Latest Tweets
               %ul#tweets.recent-posts
-            / /.popular-posts
-          / /.col-md-3
           .col-md-4
             .widget.tagcloud
               %h5.subpage-title Tags
               = tag_cloud
-            / /.tagcloud
-        / /.row
-      / /.container
-    / /.footer-1
     %footer.footer-2
       .container
         .row
           .col-xs-6.footer-2-info-wrapper
             %p
-              Railscasts' best kept secrets © 2013.
+              RailsCasts' best kept secrets © 2013.
               %br
-              Powered by
+              Built for 2013
+              = link_to 'Rails Rumble', 'http://railsrumble.com'
+              %br
+              &copy;
               = link_to 'LogicalBricks Solutions', 'http://logicalbricks.com'
-          / /.footer-2-info
           .col-xs-6.social-link-wrapper
             %ul.social-links
               %li
@@ -100,7 +94,3 @@
               %li
                 %a{:href => "#"}
                   %i.icon-dribbble
-          / /.social-links
-        / /.row
-      / /.container
-    / /.footer-2

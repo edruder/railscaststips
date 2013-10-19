@@ -1,7 +1,7 @@
 - content_for :main_search do
   .container-fluid
     .jumbotron.search
-      %h1 Railscasts' best kept secrets
+      %h1 RailsCasts' best kept secrets
       %p Try searching for a hidden topic
       .row
         .col-lg-6.col-lg-offset-3
@@ -9,26 +9,18 @@
             .input-group
               = text_field_tag :query, params[:query], class: 'form-control'
               %span.input-group-btn
-                = submit_tag "Search!", name: nil, class: "btn btn-default" 
+                = submit_tag "Search!", name: nil, class: "btn btn-default"
 
-.our-services
+%section.colored_wrapper
   .row
-    .col-md-4
-      .service
-        %span.service-icon
-          %i.icon-laptop
-        %h4 Episode 1
-        %p Donec in velit vel ipsum auctor pulvinar. Vesti bulum iaculis lacinia est. Proin dictum elementum velit. Fusce euismod auctor pulvinar.
-    .col-md-4
-      .service
-        %span.service-icon
-          %i.icon-code
-        %h4 Episode 11
-        %p Donec in velit vel ipsum auctor pulvinar. Vesti bulum iaculis lacinia est. Proin dictum elementum velit. Fusce euismod auctor pulvinar.
-    .col-md-4
-      .service
-        %span.service-icon
-          %i.icon-cog
-        %h4 Episode 111
-        %p Donec in velit vel ipsum auctor pulvinar. Vesti bulum iaculis lacinia est. Proin dictum elementum velit. Fusce euismod auctor pulvinar.
-  / /.container
+    - @treasures.each do |treasure|
+      .col-md-4
+        %center
+          = link_to image_tag(treasure.railscast.image_url), treasure
+        .caption
+          %h4= treasure.railscast.name
+          %p= treasure.description
+          %p
+            = link_to treasure, class: 'btn btn-warning btn-sm btn-block' do
+              %i.icon-play-sign
+              Watch tip
