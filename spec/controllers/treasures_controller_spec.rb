@@ -2,15 +2,8 @@ require 'spec_helper'
 
 describe TreasuresController do
 
-  # This should return the minimal set of attributes required to create a valid
-  # Treasure. As you add validations to Treasure, be sure to
-  # adjust the attributes here as well.
   let(:valid_attributes) { { "description" => "MyText", "time" => Time.now } }
 
-
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # TreasuresController. Be sure to keep this updated too.
   let(:valid_session) { { user_id: FactoryGirl.create(:user, guest: true)} }
 
   describe "GET index" do
@@ -164,14 +157,12 @@ describe TreasuresController do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved treasure as @treasure" do
-        # Trigger the behavior that occurs when invalid params are submitted
         Treasure.any_instance.stub(:save).and_return(false)
         post :create, {:treasure => { "description" => "invalid value" }}, valid_session
         assigns(:treasure).should be_a_new(Treasure)
       end
 
       it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
         Treasure.any_instance.stub(:save).and_return(false)
         post :create, {:treasure => { "description" => "invalid value" }}, valid_session
         response.should render_template("new")
@@ -183,10 +174,6 @@ describe TreasuresController do
     describe "with valid params" do
       it "updates the requested treasure" do
         treasure = Treasure.create! valid_attributes
-        # Assuming there are no other treasures in the database, this
-        # specifies that the Treasure created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
         Treasure.any_instance.should_receive(:update).with({ "description" => "MyText" })
         put :update, {:id => treasure.to_param, :treasure => { "description" => "MyText" }}, valid_session
       end
@@ -207,7 +194,6 @@ describe TreasuresController do
     describe "with invalid params" do
       it "assigns the treasure as @treasure" do
         treasure = Treasure.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
         Treasure.any_instance.stub(:save).and_return(false)
         put :update, {:id => treasure.to_param, :treasure => { "description" => "invalid value" }}, valid_session
         assigns(:treasure).should eq(treasure)
@@ -215,7 +201,6 @@ describe TreasuresController do
 
       it "re-renders the 'edit' template" do
         treasure = Treasure.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
         Treasure.any_instance.stub(:save).and_return(false)
         put :update, {:id => treasure.to_param, :treasure => { "description" => "invalid value" }}, valid_session
         response.should render_template("edit")
