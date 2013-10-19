@@ -1,17 +1,55 @@
 %p#notice= notice
 
-%video#railscast_video.video-js.vjs-default-skin{ controls: "", poster: "#{image_path('video/poster.jpg')}", :preload => "auto", "data-setup" => '{"example_option":true}', width: "960", height: '600', "data-time" => "#{@treasure.at_second}" }
-  %source{ src: "#{@treasure.railscast.video_url}", :type => "video/mp4"}
+%h4.subpage-title
+  = @treasure.railscast.name
+
+.row
+  .col-md-12
+    %video#railscast_video.video-js.vjs-default-skin{ controls: "", poster: "#{image_path('video/poster.jpg')}", :preload => "auto", "data-setup" => '{"example_option":true}', width: "960", height: '600', "data-time" => "#{@treasure.at_second}" }
+      %source{ src: "#{@treasure.railscast.video_url}", :type => "video/mp4"}
 
 .row
   .col-md-8.item-description.wrapper-1
-    %h5.subpage-title Description
-    = @treasure.description
+    .row
+      .col-md-12
+        %h5.subpage-title Description
+        = @treasure.description
+
+    .row
+      .col-md-12
+        %h5 Tags
+        = tags_for_treasure @treasure
 
   .col-md-4.item-details.wrapper-1
     %h5.subpage-title Details
-    Lorem Ipsum
-    = link_to @treasure.railscast.name, @treasure.railscast.url, target: 'blank'
+    %ul.project-details-list
+      %li
+        %h6 Found at
+        .project-terms
+          = found_at @treasure.time
+      %li
+        %h6 Link to episode
+        .project-terms
+          = link_to @treasure.railscast.name, @treasure.railscast.url, target: 'blank'
+
+- if Treasure.related_treasures(@treasure).count > 0
+  .panel.panel-default
+    .panel-heading Other treasures found in this Railscast
+
+    %table.table.table-hover
+      %thead
+        %tr
+          %th Tags
+          %th Description
+          %th Found at
+      %tbody
+        - Treasure.related_treasures(@treasure).each do |treasure|
+          %tr
+            %td= treasure.tag_list
+            %td= treasure.description
+            %td
+              = link_to found_at(treasure.time), treasure
+
 
 = link_to 'Edit', edit_treasure_path(@treasure)
 \|

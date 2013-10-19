@@ -1,19 +1,18 @@
-%h1 Listing treasures
+%h4.subpage-title Listing treasures
 
-%table
-  %tr
-    %th Description
-    %th
-    %th
-    %th
+- @treasures.each_slice(3) do |treasures|
+  .row
+    - treasures.each do |treasure|
+      .col-md-3
+        .thumbnail
+          = image_tag treasure.railscast.image_url
+          .caption
+            %h4= treasure.railscast.name
+            %p= treasure.description
+            %p
+              = link_to treasure, class: 'btn btn-warning btn-sm btn-block' do
+                %i.icon-play-sign
+                Watch treasure
 
-  - @treasures.each do |treasure|
-    %tr
-      %td= treasure.description
-      %td= link_to 'Show', treasure
-      %td= link_to 'Edit', edit_treasure_path(treasure)
-      %td= link_to 'Destroy', treasure, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
 
 = link_to 'New Treasure', new_treasure_path

@@ -18,4 +18,21 @@ describe Treasure do
     end
   end
 
+  describe '.related_treasures' do
+    before :each do
+      railscast = FactoryGirl.create :railscast
+      @treasure = FactoryGirl.create :treasure, railscast: railscast
+      FactoryGirl.create :treasure, railscast: railscast
+      @treasures = Treasure.related_treasures(@treasure).all
+    end
+
+    it 'returns one treasure' do
+      @treasures.length.should == 1
+    end
+
+    it 'does not return the provided treasure' do
+      @treasures.should_not include(@treasure)
+    end
+  end
+
 end
