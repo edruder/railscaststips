@@ -8,6 +8,7 @@ R13Team376::Application.routes.draw do
   get "home/index"
 
   root 'home#index'
+  get "/tweets" => "home#tweets"
 
   get "auth/:provider/callback" => "sessions#create"
   get "tryit" => "sessions#create", as: :tryit
