@@ -62,3 +62,4 @@ group :development, :test do
 end
 
 gem 'omniauth-github'
+gem 'whenever', require: false
