@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :railscast do
-    url "http://railscasts.com/episodes/10-fixture"
-    name "Fixture"
+    sequence(:url) { |n| "http://railscasts.com/episodes/#{n}-fixture" }
+    sequence(:name) { |n| "Fixture #{n}" }
     description "A description"
-    position 10
+    sequence(:position) { |n| n }
     permalink 'fixture'
   end
 end

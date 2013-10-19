@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe TreasuresController do
 
-  let(:valid_attributes) { { "description" => "MyText", "time" => Time.now } }
+  let(:railscast) { FactoryGirl.create :railscast }
+  let(:valid_attributes) { { railscast_id: railscast.id, description: "MyText", time: Time.now } }
 
   let(:valid_session) { { user_id: FactoryGirl.create(:user, guest: true)} }
 
@@ -39,10 +40,12 @@ describe TreasuresController do
           railscast: railscast
         FactoryGirl.create :treasure,
           description: "Railscast #371 has an interesting note about how to disable parameters in minute 03:45.",
-          tag_list: "strong parameters, rails 4, ruby"
+          tag_list: "strong parameters, rails 4, ruby",
+          railscast: railscast
         FactoryGirl.create :treasure,
           description: "Some weird description",
-          tag_list: "tag1, tag2, 4"
+          tag_list: "tag1, tag2, 4",
+          railscast: railscast
       end
 
       it 'should show 3 result for "rails"' do

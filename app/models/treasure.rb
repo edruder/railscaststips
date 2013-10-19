@@ -1,7 +1,7 @@
 class Treasure < ActiveRecord::Base
   
   # == Validations ==
-  validates :description, :time, presence: true
+  validates :description, :time, :railscast, presence: true
   validates_length_of :description, maximum: 150, allow_blank: false
 
   # == Associations ==

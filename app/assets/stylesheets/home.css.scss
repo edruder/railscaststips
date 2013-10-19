@@ -3,11 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .jumbotron.search{
-  background: url(image-path('slides/slide.jpg'));
+  background: url(image-path('slides/slide3.jpg'));
   text-align: center;
 
   h1{
     font-size: 50px;
+    color: #464646;
+  }
+  p {
+    color: #464646;
   }
 
   .input-group{
