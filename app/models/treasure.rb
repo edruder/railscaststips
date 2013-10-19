@@ -9,4 +9,10 @@ class Treasure < ActiveRecord::Base
 
   # == Tags ==
   acts_as_taggable
+
+  # == Methods ==
+  def at_second
+    # TODO: actually calculate number of seconds based on time attribute
+    30
+  end
 end
