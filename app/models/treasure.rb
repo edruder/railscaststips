@@ -17,7 +17,7 @@ class Treasure < ActiveRecord::Base
   include PgSearch
   pg_search_scope :text_search, against: :description,
     using: {tsearch: {dictionary: "english"}},
-    associated_against: { tags: :name }
+    associated_against: { tags: :name, railscast: [ :name, :description ] }
 
   # == Methods ==
   def at_second
