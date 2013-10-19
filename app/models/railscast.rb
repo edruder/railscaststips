@@ -19,7 +19,6 @@ class Railscast < ActiveRecord::Base
   end
 
   def image_url
-    return '' if pro or revised
     IMAGE_BASE_URL + generate_basename + '.png'
   end
 
