@@ -37,7 +37,11 @@
         / /.navbar
       / /.header
 
-    = yield
+    = yield :main_search
+
+    %section
+      .container
+        = yield
 
     %footer.footer-1
       .container
