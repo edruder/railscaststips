@@ -5,10 +5,11 @@
       %p Try searching for a hidden topic
       .row
         .col-lg-6.col-lg-offset-3
-          .input-group
-            %input.form-control{:type => "text"}
-            %span.input-group-btn
-              %button.btn.btn-default{:type => "button"} Search!
+          = form_tag  treasures_path, method: :get do
+            .input-group
+              = text_field_tag :query, params[:query], class: 'form-control'
+              %span.input-group-btn
+                = submit_tag "Search!", name: nil, class: "btn btn-default" 
 
 .our-services
   .row
