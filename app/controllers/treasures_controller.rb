@@ -8,6 +8,16 @@ class TreasuresController < ApplicationController
     @treasures = load_treasures
   end
 
+  # POST /treasures/1/vote
+  def vote
+    vote = current_user.treasure_votes.new(value: params[:value], treasure_id: params[:id])
+    if vote.save
+      redirect_to :back, notice: "Your vote was registered successfully."
+    else
+      redirect_to :back, alert: "Could not save your vote, maybe you already voted."
+    end
+  end
+
   # GET /treasures/1
   # GET /treasures/1.json
   def show

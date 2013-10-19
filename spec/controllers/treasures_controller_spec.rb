@@ -90,6 +90,27 @@ describe TreasuresController do
     end
   end
 
+  describe 'POST vote' do
+    before :each do
+      @user = FactoryGirl.create :user
+      railscast = FactoryGirl.create :railscast
+      @treasure = FactoryGirl.create :treasure, railscast: railscast
+      TreasuresController.any_instance.stub(:current_user).and_return(@user)
+      # set for redirect_to :return
+      request.env["HTTP_REFERER"] = treasure_path(@treasure)
+    end
+
+    it 'increments number of votes by one' do
+      post :vote, value: 1, id: @treasure.id
+      @treasure.reload.votes.should == 1      
+    end
+
+    it 'decrements number of votes by one' do
+      post :vote, value: -1, id: @treasure.id
+      @treasure.votes.should == -1      
+    end
+  end
+
   describe "GET show" do
     it "assigns the requested treasure as @treasure" do
       treasure = Treasure.create! valid_attributes
