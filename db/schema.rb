@@ -19,12 +19,11 @@ ActiveRecord::Schema.define(version: 20131019034155) do
   create_table "railscasts", force: true do |t|
     t.string   "url"
     t.string   "name"
-    t.text     "description"
-    t.boolean  "railscasts",  default: false
-    t.boolean  "pro",         default: false
-    t.boolean  "revised",     default: false
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "pro",         default: false
+    t.boolean  "revised",     default: false
   end
 
   create_table "taggings", force: true do |t|
