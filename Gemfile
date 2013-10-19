@@ -55,3 +55,5 @@ group :development, :test do
 
   gem 'pry'
 end
+
+gem 'omniauth-github'

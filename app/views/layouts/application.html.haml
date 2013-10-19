@@ -31,11 +31,12 @@
                   = link_to 'FAQ', '#'
                 %li
                   = link_to 'Contact', '#'
-              / /.nav
-            / /.navbar-collapse
-          / /.container
-        / /.navbar
-      / /.header
+                %li
+                  - if current_user
+                    = "Hello #{current_user.name}!"
+                    = link_to 'Sign out', signout_path
+                  - else
+                    = link_to "Sign in with Github", "/auth/github"
 
     = yield :main_search
 

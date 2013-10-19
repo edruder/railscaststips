@@ -3,8 +3,12 @@ R13Team376::Application.routes.draw do
   resources :treasures
 
   get "home/index"
-  
+
   root 'home#index'
+
+  get "auth/:provider/callback" => "sessions#create"
+  get 'auth/failure', to: redirect('/')
+  get "signout" => "sessions#destroy", :as => :signout
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -45,7 +49,7 @@ R13Team376::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
