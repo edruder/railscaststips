@@ -1,5 +1,7 @@
-- if current_user and current_user.admin?
-  = render 'index_admin'
-- else
-  = render 'index_user'
+%section
+  .container
+    - if current_user and current_user.admin?
+      = render 'index_admin'
+    - else
+      = render 'index_user'
 

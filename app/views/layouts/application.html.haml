@@ -26,6 +26,8 @@
                 %li.active
                   = link_to 'Home', '#'
                 %li
+                  = link_to 'Tips', treasures_path
+                %li
                   = link_to 'RailsCasts', railscasts_path
                 %li
                   = link_to 'FAQ', '#'
@@ -41,9 +43,7 @@
 
     = yield :main_search
 
-    %section
-      .container
-        = yield
+    = yield
 
     %footer.footer-1
       .container

@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def logged_user
+    redirect_to root_url, alert: "Please login, or use a Guest account." if current_user.nil?
+  end
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
