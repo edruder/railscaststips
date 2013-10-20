@@ -59,3 +59,9 @@
         - if current_user
           = link_to 'Edit', edit_treasure_path(@treasure), class: 'btn btn-flat flat-inverse btn-rounded'
         = link_to 'Back', treasures_path, class: 'btn btn-warning'
+
+:javascript
+  _V_("#railscast_video").ready(function(){
+    myPlayer = _V_("#railscast_video");
+    myPlayer.on("loadedmetadata", addVideoEvent);
+  });

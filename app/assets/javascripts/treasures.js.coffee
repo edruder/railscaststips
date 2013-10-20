@@ -7,16 +7,7 @@ loadInfiniteScroll = ->
     nextSelector: "nav.pagination a[rel=next]"
     itemSelector: "#tips"
 
-$(window).load ->
-  return unless $("#railscast_video").length
-  _V_("#railscast_video").ready ->
-    loadVideo()
-
-loadVideo = ->
-  myPlayer = _V_("#railscast_video")
-  myPlayer.on "loadedmetadata", addVideoEvent
-
-addVideoEvent = ->
+@addVideoEvent = ->
   myPlayer = _V_("#railscast_video")
   myPlayer.play()
   time = $('#railscast_video').find('video').data('time')
@@ -30,6 +21,7 @@ loadVideoAtTime = () ->
     myPlayer = _V_("#railscast_video")
     myPlayer.play()
     myPlayer.currentTime(time)
+
 
 loadTreasureForm = ->
   $('#treasure_railscast_id').select2()
