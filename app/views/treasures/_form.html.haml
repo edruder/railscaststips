@@ -1,7 +1,7 @@
 = form_for @treasure do |f|
   .form-group
     = f.label :railscast
-    = f.collection_select :railscast_id, @railscasts, :id, :complete_name, { prompt: 'Select Railscast'}, style: "width:100%"
+    = f.select :railscast_id, options_for_select(@railscasts.map{|r| [ r.complete_name, r.id, {'data-image' => r.image_url }]}), { prompt: 'Select Railscast'}, style: "width: 100%"
   .form-group
     = f.label :description
     = f.text_area :description, class: 'form-control'

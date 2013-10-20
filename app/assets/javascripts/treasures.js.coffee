@@ -25,9 +25,18 @@ loadVideoAtTime = () ->
     myPlayer.play()
     myPlayer.currentTime(time)
 
+formatRailscast = (r) ->
+  markup = "<table class='railscast-result'><tr>"
+  if (r.id)
+    markup += "<td class='railscast-image'><img src='" + $(r.element).data('image') + "'/></td>"
+  markup += "<td class='railscast-info'><div class='railscast-title'>" + r.text + "</div>"
+  return markup
 
 loadTreasureForm = ->
-  $('#treasure_railscast_id').select2()
+  $('#treasure_railscast_id').select2(
+    formatResult: formatRailscast
+    formatSelection: formatRailscast
+  )
   tags = $('#treasure_tag_list').data('tags')
   $('#treasure_tag_list').select2({ tags: tags })
 
