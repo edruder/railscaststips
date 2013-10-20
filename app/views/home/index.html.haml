@@ -10,7 +10,11 @@
               = text_field_tag :query, params[:query], class: 'form-control'
               %span.input-group-btn
                 = submit_tag "Search!", name: nil, class: "btn btn-default"
-
+      %h1 or
+      %h2 if you find a useful tip hidden on a RailsCasts
+      = link_to new_treasure_path, class: 'btn btn-lg btn-info' do
+        %i.icon-plus
+        Add A New Tip
 %section.colored_wrapper
   .container
     .row
