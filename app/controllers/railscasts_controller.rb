@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class RailscastsController < ApplicationController
   before_filter :admin_user
   before_action :set_railscast, only: [:show, :edit, :update, :destroy]
@@ -6,7 +8,7 @@ class RailscastsController < ApplicationController
   # GET /railscasts.json
   def index
     if current_user && current_user.admin?
-      @railscasts = Railscast.all
+      @railscasts = Railscast.page(params[:page])
     else
       @railscasts = Railscast.page(params[:page])
     end
@@ -62,6 +64,15 @@ class RailscastsController < ApplicationController
     @railscast.destroy
     respond_to do |format|
       format.html { redirect_to railscasts_url }
+      format.json { head :no_content }
+    end
+  end
+
+  def load
+    @updater = RailscastsLoader.new JSON.parse(open("http://railscasts.com/episodes.json").read)
+    @updater.update
+    respond_to do |format|
+      format.html { redirect_to railscasts_path, notice: 'RailsCasts database updated.' }
       format.json { head :no_content }
     end
   end
