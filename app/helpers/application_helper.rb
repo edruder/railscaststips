@@ -24,9 +24,14 @@ module ApplicationHelper
     base_url + params.to_query
   end
 
-  def menu_item(text, url, options={})
-    content_tag :li, class: (url == request.fullpath) ? 'active' : '' do
-      link_to text, url
+  def menu_item(text, url_link, css_class=nil)
+    css_class ||= css_class_for_url(url_link)
+    content_tag :li, class: css_class do
+      link_to text, url_link
     end
+  end
+
+  def css_class_for_url(url_link)
+    url_link == request.fullpath ? 'active' : ''
   end
 end

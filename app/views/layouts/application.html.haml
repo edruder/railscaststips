@@ -24,7 +24,7 @@
             .collapse.navbar-collapse.navbar-ex1-collapse
               %ul.nav.navbar-nav
                 = menu_item 'Home', root_path
-                = menu_item 'Tips', treasures_path
+                = menu_item 'Tips', treasures_path, controller.kind_of?(TreasuresController) ? 'active' : nil
                 = menu_item 'FAQ', faq_path
                 = menu_item 'About', about_path
                 - if current_user and current_user.admin?
