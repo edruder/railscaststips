@@ -1,11 +1,4 @@
 = form_for @treasure do |f|
-  - if @treasure.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@treasure.errors.count, "error")} prohibited this treasure from being saved:"
-      %ul
-        - @treasure.errors.full_messages.each do |msg|
-          %li= msg
-
   .form-group
     = f.label :railscast
     = f.collection_select :railscast_id, @railscasts, :id, :complete_name, { prompt: 'Select Railscast'}, style: "width:100%"
