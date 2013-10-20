@@ -22,6 +22,7 @@ class Treasure < ActiveRecord::Base
     associated_against: { tags: :name, railscast: [ :name, :description ] }
 
   # == Callbacks ==
+  before_validation :normalize_time
   before_save :add_railscast_tag
 
   # == Methods ==
@@ -72,6 +73,14 @@ class Treasure < ActiveRecord::Base
   def add_railscast_tag
     if self.railscast.present?
       self.tag_list << "#{self.railscast.position}"
+    end
+  end
+
+  # 'Remove' date and hour.
+  def normalize_time
+    if time.present?
+      Time::DATE_FORMATS[:ms] = "%M:%S"
+      self.time = "0:#{time.to_formatted_s(:ms)}".to_time
     end
   end
 end
