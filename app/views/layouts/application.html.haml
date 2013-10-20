@@ -27,10 +27,11 @@
                   = link_to 'Home', root_path
                 %li{ class: controller.kind_of?(TreasuresController) ? 'active' : '' }
                   = link_to 'Tips', treasures_path
-                %li{ class: controller.kind_of?(RailscastsController) ? 'active' : '' }
-                  = link_to 'RailsCasts', railscasts_path
+                - if current_user and current_user.admin?
+                  %li{ class: controller.kind_of?(RailscastsController) ? 'active' : '' }
+                    = link_to 'RailsCasts', railscasts_path
                 %li
-                  = link_to 'FAQ', '#'
+                  = link_to 'FAQ', '/faq'
                 %li.dropdown
                   = link_to 'Login', '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' }
                   %ul.dropdown-menu

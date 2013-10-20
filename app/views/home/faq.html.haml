@@ -1,0 +1,47 @@
+%section.page-title-wrapper
+  .container
+    .row
+      .col-xs-12.col-sm-6.col-md-6.page-title
+        %h4 FAQ
+      .col-xs-6.hidden-xs.breadcrumb-wrapper
+        %ol.breadcrumb.pull-right
+          %li
+            = link_to 'Home', root_path
+          %li.active FAQ
+
+%section
+  .container.faq
+    .col-md-9
+      %h5.subpage-title What is NOT RailsCasts Tips?
+      %p
+        RailsCastsTips is not a clone of
+        = link_to "Ryan Bates' Railscasts", 'http://www.railscasts.com'
+
+      %hr
+
+      %h5.subpage-title What is RailsCasts Tips?
+      %p
+        RailsCasts Tips is a platform intended to serve the Ruby on Rails community as a repository of hidden information beneath the (awesome)
+        = link_to "RailsCasts", 'http://www.railscasts.com'
+        produced by
+        = link_to "Ryan Bates.", 'https://github.com/ryanb'
+      %p
+        How many times have you said something like this?
+      %blockquote
+        %p
+          I saw this awesome feature about
+          %i some obscure theme
+          last week in a RailsCast, but I can't remember in which one.
+      %p
+        We are talking about a RailsCast that covers an specific subject but in the process, and unintentionally, exposes
+        %b small tips and tricks
+        that could make your day. Our goal is to collect all this information in a single resource.
+
+      %hr
+
+      %h5.subpage-title Hey, I know a tip or two. Can I share them?
+      %p
+        %b Of course you can!
+        In fact, we encourage you to do so.
+    .col-md-3
+      = render "treasures/side_bar"
