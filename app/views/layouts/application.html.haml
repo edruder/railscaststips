@@ -3,8 +3,8 @@
   %head
     %title RailsCasts' tips
     = favicon_link_tag
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
     = csrf_meta_tags
   %body
     .wrap
@@ -20,15 +20,17 @@
               = link_to root_path, class: 'navbar-brand' do
                 = image_tag 'logo.png'
                 Rails
-                %span Casts Tips.
+                %span Casts.
             .collapse.navbar-collapse.navbar-ex1-collapse
               %ul.nav.navbar-nav
                 %li{ class: controller.kind_of?(HomeController) ? 'active' : '' }
                   = link_to 'Home', root_path
                 %li{ class: controller.kind_of?(TreasuresController) ? 'active' : '' }
                   = link_to 'Tips', treasures_path
+                %li{ class: controller.kind_of?(RailscastsController) ? 'active' : '' }
+                  = link_to 'RailsCasts', railscasts_path
                 %li
-                  = link_to 'About', '#'
+                  = link_to 'FAQ', '#'
                 %li.dropdown
                   = link_to 'Login', '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' }
                   %ul.dropdown-menu
@@ -89,10 +91,11 @@
             %p
               RailsCasts Tips© 2013.
               %br
+              Built for 2013
+              = link_to image_tag('railsrumble_small.png'), 'http://railsrumble.com', alt: 'Rails Rumble'
+              %br
               &copy;
               = link_to 'LogicalBricks Solutions', 'http://logicalbricks.com'
-              %br
-              = link_to image_tag('rails-rumble-badge-2013.png', width: '140px', heigth: '54px'), 'http://railsrumble.com', alt: 'Rails Rumble'
           .col-xs-6.social-link-wrapper
             %ul.social-links
               %li
@@ -101,10 +104,3 @@
               %li
                 %a{:href => 'https://twitter.com/RailsCastsTips'}
                   %i.icon-twitter
-    :javascript
-      var rumbleBannerBackgroundColor, rumbleBannerTextColor, rumbleBannerLinkColor, rumbleBannerPlacement;
-      rumbleBannerBackgroundColor = "#161616";
-      rumbleBannerTextColor = "#ff950e";
-      rumbleBannerLinkColor = "#ffffff";
-
-    = javascript_include_tag "http://s0.railsrumble.com/banner.js"
