@@ -21,6 +21,9 @@ class Treasure < ActiveRecord::Base
     using: {tsearch: {dictionary: "english"}},
     associated_against: { tags: :name, railscast: [ :name, :description ] }
 
+  # == Callbacks ==
+  before_save :add_railscast_tag
+
   # == Methods ==
   def at_second
     time.min * 60 + time.sec
@@ -64,5 +67,11 @@ class Treasure < ActiveRecord::Base
 
   def time_fits_duration
     errors.add :time, 'is out of duration' if time and railscast and railscast.out_of_duration? time
+  end
+
+  def add_railscast_tag
+    if self.railscast.present?
+      self.tag_list << "#{self.railscast.position}"
+    end
   end
 end
