@@ -16,5 +16,6 @@
 /tmp
 
 *.swp
+*.orig
 /config/database.yml
 /config/github.yml

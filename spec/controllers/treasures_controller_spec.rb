@@ -29,15 +29,16 @@ describe TreasuresController do
 
     context 'with query param' do
       before :each do
-        railscast = FactoryGirl.create :railscast
+        railscast = FactoryGirl.create :railscast, name: 'Some name', description: 'Some text'
+        other_railscast = FactoryGirl.create :railscast
         FactoryGirl.create :treasure,
           description: "How to use => to preserve context in coffeescript function",
           tag_list: "coffeescript, javascript, rails",
-          railscast: railscast
+          railscast: other_railscast
         FactoryGirl.create :treasure,
           description: "An awesome tip hidden inside railscast #343, it shows how to use full text search with text parameter",
           tag_list: "full text search, rails, postgresql",
-          railscast: railscast
+          railscast: other_railscast
         FactoryGirl.create :treasure,
           description: "Railscast #371 has an interesting note about how to disable parameters in minute 03:45.",
           tag_list: "strong parameters, rails 4, ruby",
