@@ -13,6 +13,10 @@
     margin-top: 5px;
     margin-bottom: 10px;
   }
+
+  h4 {
+    text-align: center;
+  }
 }
 
 .description {
@@ -28,4 +32,13 @@
   ul.tagcloud-list{
     font-size: 1.5em;
   }
+}
+
+.subpage-title.tip-description {
+  padding-top: 20px;
+  line-height: 20px;
+  color: #464646;
+  text-transform: none;
+  font-size: 21px;
+  font-family: 'Montserrat', sans-serif;
 }
