@@ -16,6 +16,16 @@ addVideoEvent = ->
   myPlayer.play()
   time = $('#railscast_video').find('video').data('time')
   myPlayer.currentTime(time)
+  loadVideoAtTime()
+
+loadVideoAtTime = () ->
+  $('a.at-time').click (e) ->
+    e.preventDefault()
+    time = $(this).data('time')
+    myPlayer = _V_("#railscast_video")
+    myPlayer.play()
+    myPlayer.currentTime(time)
+
 
 loadTreasureForm = ->
   $('#treasure_railscast_id').select2()

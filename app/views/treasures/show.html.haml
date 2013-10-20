@@ -26,26 +26,30 @@
           %li
             %h6 Found at
             .project-terms
-              = found_at @treasure.time
+              = link_to @treasure, class: 'at-time', data: { time: @treasure.at_second }, title: "click to play #{found_at(@treasure.time)}" do
+                %i.icon-time
+                = found_at(@treasure.time)
           %li
             %h6 Link to episode
             .project-terms
-              = link_to @treasure.railscast.name, @treasure.railscast.url, target: 'blank'
-
-          %li
-            %h6 Share via twitter
-            .project-terms
-              = render 'twitter_share_button', treasure: @treasure
+              = link_to @treasure.railscast.url, target: 'blank' do
+                %i.icon-link
+                = @treasure.railscast.name
           %li
             %h6 Number of votes
             .project-terms
               - if current_user && current_user.can_vote_for?(@treasure)
-                = link_to vote_treasure_path(@treasure, value: 1), method: "post", class: 'btn btn-link' do
+                = link_to vote_treasure_path(@treasure, value: 1), method: "post", title: 'Vote this tip', class: 'btn-link' do
                   %i.icon-thumbs-up-alt
                   = @treasure.votes
               - else
                 %i.icon-thumbs-up-alt
                 = @treasure.votes
+
+          %li
+            %h6 Share via twitter
+            .project-terms
+              = render 'twitter_share_button', treasure: @treasure
 
     - if Treasure.related_treasures(@treasure).count > 0
       .panel.panel-default
@@ -63,7 +67,9 @@
                 %td= treasure.tag_list
                 %td= treasure.description
                 %td
-                  = link_to found_at(treasure.time), treasure
+                  = link_to treasure, class: 'btn-link' do
+                    %i.icon-link
+                    = found_at(treasure.time)
 
     .actions
       .pull-right
