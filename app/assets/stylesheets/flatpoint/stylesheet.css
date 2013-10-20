@@ -1284,7 +1284,7 @@ section {
     margin-bottom: 20px;
 }
 .pricing .title {
-    background-color: #16a085;
+    background-color: #464646;
 
     text-align: center;
     padding: 5px;
@@ -1303,7 +1303,7 @@ section {
 }
 
 .pricing .price {
-    background-color: #ff950e;
+    background-color: #707070;
     color: #ffffff;
     padding: 20px;
     font-family: 'Open Sans', sans-serif;

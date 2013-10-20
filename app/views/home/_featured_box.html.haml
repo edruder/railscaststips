@@ -1,0 +1,12 @@
+.col-md-4
+  .pricing
+    .p-header
+      .title
+        %h4= title
+      .price
+        = link_to image_tag(treasure.railscast.image_url), treasure, class: 'img-thumbnail'
+    .p-footer
+      %p= treasure.description.truncate(90)
+      = link_to treasure, class: 'btn btn-flat flat-primary' do
+        %i.icon-play-sign
+        Watch treasure
