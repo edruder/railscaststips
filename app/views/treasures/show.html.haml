@@ -6,7 +6,8 @@
     .row
       .col-md-12
         %video#railscast_video.video-js.vjs-default-skin{ controls: "", poster: "#{image_path('video/poster.jpg')}", :preload => "auto", "data-setup" => '{"example_option":true}', width: "960", height: '600', "data-time" => "#{@treasure.at_second}" }
-          %source{ src: "#{@treasure.railscast.video_url}", :type => "video/mp4"}
+          - @treasure.railscast.video_urls.each_with_index do |video_url, i|
+            %source{ src: "#{video_url}", :type => "video/#{ Railscast::VIDEO_FORMATS[i] }"}
 
     .row
       .col-md-8.item-description.wrapper-1
@@ -64,7 +65,8 @@
                 %td
                   = link_to found_at(treasure.time), treasure
 
-
-    = link_to 'Edit', edit_treasure_path(@treasure)
-    \|
-    = link_to 'Back', treasures_path
+    .actions
+      .pull-right
+        - if current_user
+          = link_to 'Edit', edit_treasure_path(@treasure), class: 'btn btn-flat flat-inverse btn-rounded'
+        = link_to 'Back', treasures_path, class: 'btn btn-warning'

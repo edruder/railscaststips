@@ -24,10 +24,14 @@ describe Railscast do
     end
   end
 
-  describe '#video_url' do
+  describe '#video_urls' do
     it 'returns video url' do
       railscast = FactoryGirl.create :railscast, url: 'www.mysite.com/123-index', position: '123', permalink: 'index'
-      railscast.video_url.should == 'http://media.railscasts.com/assets/episodes/videos/123-index.mp4'
+      urls = railscast.video_urls
+      urls[0].should == 'http://media.railscasts.com/assets/episodes/videos/123-index.mp4'
+      urls[1].should == 'http://media.railscasts.com/assets/episodes/videos/123-index.m4v'
+      urls[2].should == 'http://media.railscasts.com/assets/episodes/videos/123-index.webm'
+      urls[3].should == 'http://media.railscasts.com/assets/episodes/videos/123-index.ogv'
     end
   end
 

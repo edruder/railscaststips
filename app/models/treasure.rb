@@ -5,7 +5,7 @@ class Treasure < ActiveRecord::Base
   validates_length_of :description, maximum: 150, allow_blank: false
 
   # == Associations ==
-  belongs_to :railscast
+  belongs_to :railscast, counter_cache: true
   has_many :treasure_votes
 
   # == Scopes ==
