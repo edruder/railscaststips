@@ -31,6 +31,7 @@ namespace :deploy do
     run "mkdir -p #{shared_path}/config"
     put File.read("config/database.yml.template"), "#{shared_path}/config/database.yml"
     put File.read("config/github.yml.template"), "#{shared_path}/config/github.yml"
+    put File.read("config/twitter.yml.template"), "#{shared_path}/config/twitter.yml"
     puts "Now edit the config files in #{shared_path}."
   end
   after "deploy:setup", "deploy:setup_config"
@@ -38,6 +39,7 @@ namespace :deploy do
   task :symlink_config, roles: :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/config/github.yml #{release_path}/config/github.yml"
+    run "ln -nfs #{shared_path}/config/twitter.yml #{release_path}/config/twitter.yml"
   end
   after "deploy:finalize_update", "deploy:symlink_config"
 

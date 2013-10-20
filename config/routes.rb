@@ -6,6 +6,7 @@ R13Team376::Application.routes.draw do
   end
 
   get "home/index"
+  get "about" => "home#about"
 
   root 'home#index'
   get "/tweets" => "home#tweets"
