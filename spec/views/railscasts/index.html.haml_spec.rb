@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "railscasts/index" do
   before(:each) do
-    assign(:railscasts, [
+    assign(:railscasts, Kaminari.paginate_array([
       stub_model(Railscast,
         :url => "Url",
         :name => "Name",
@@ -21,7 +21,11 @@ describe "railscasts/index" do
         :permalink => "permalink-2",
         :duration => '8:21'
       )
-    ])
+    ]).page(1))
+
+    @user = mock_model(User)
+    view.stub(:current_user).and_return(@user)
+    @user.stub(:admin?).and_return true
   end
 
   it "renders a list of railscasts" do

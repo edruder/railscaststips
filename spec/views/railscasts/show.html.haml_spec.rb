@@ -7,6 +7,10 @@ describe "railscasts/show" do
       :name => "Name",
       :description => "Description"
     ))
+
+    @user = mock_model(User)
+    view.stub(:current_user).and_return(@user)
+    @user.stub(:admin?).and_return true
   end
 
   it "renders attributes in <p>" do
