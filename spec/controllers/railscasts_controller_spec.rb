@@ -143,4 +143,17 @@ describe RailscastsController do
     end
   end
 
+  describe "GET load" do
+    it "load updater" do
+      get :load, {}, valid_session
+      assigns(:updater).should be_a(RailscastsLoader)
+    end
+
+    it "should run update method" do
+      RailscastsLoader.any_instance.should_receive(:update)
+      get :load, {}, valid_session
+    end
+  end
+
+
 end
