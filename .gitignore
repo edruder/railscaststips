@@ -19,3 +19,4 @@
 *.orig
 /config/database.yml
 /config/github.yml
+/config/twitter.yml
