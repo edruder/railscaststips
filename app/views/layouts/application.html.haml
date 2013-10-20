@@ -10,7 +10,6 @@
       %header.header
         %nav.navbar.navbar-default{:role => "navigation"}
           .container
-            / Brand and toggle get grouped for better mobile display
             .navbar-header
               %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
                 %span.sr-only Toggle navigation
@@ -20,7 +19,6 @@
               = link_to root_path, class: 'navbar-brand' do
                 Rails
                 %span Casts.
-            / Collect the nav links, forms, and other content for toggling
             .collapse.navbar-collapse.navbar-ex1-collapse
               %ul.nav.navbar-nav
                 %li.active
@@ -81,7 +79,7 @@
               RailsCasts Tips© 2013.
               %br
               Built for 2013
-              = link_to 'Rails Rumble', 'http://railsrumble.com'
+              = link_to image_tag('railsrumble_small.png'), 'http://railsrumble.com', alt: 'Rails Rumble'
               %br
               &copy;
               = link_to 'LogicalBricks Solutions', 'http://logicalbricks.com'
