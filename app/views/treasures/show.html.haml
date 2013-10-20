@@ -65,7 +65,8 @@
                 %td
                   = link_to found_at(treasure.time), treasure
 
-
-    = link_to 'Edit', edit_treasure_path(@treasure)
-    \|
-    = link_to 'Back', treasures_path
+    .actions
+      .pull-right
+        - if current_user
+          = link_to 'Edit', edit_treasure_path(@treasure), class: 'btn btn-flat flat-inverse btn-rounded'
+        = link_to 'Back', treasures_path, class: 'btn btn-warning'
