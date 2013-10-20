@@ -26,7 +26,7 @@
       %td= link_to 'Edit', edit_railscast_path(railscast)
       %td= link_to 'Destroy', railscast, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-= paginate @railscasts
+= will_paginate @railscasts
 %br
 
 = link_to 'Load Railscasts Database', load_railscasts_path
