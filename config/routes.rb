@@ -1,10 +1,13 @@
 R13Team376::Application.routes.draw do
   get 'tags/:tag', to: 'treasures#index', as: :tag
   resources :railscasts
-  resources :treasures do
+  #resources :treasures do
+  #  member { post :vote }
+  #end
+
+  resources :tips, controller: :treasures, as: 'treasures' do
     member { post :vote }
   end
-
   get "home/index"
   get "about" => "home#about"
 
