@@ -3,7 +3,7 @@ class Railscast < ActiveRecord::Base
   # == Constants ==
   VIDEO_BASE_URL = 'http://media.railscasts.com/assets/episodes/videos/'
   IMAGE_BASE_URL = 'http://railscasts.com/static/episodes/stills/'
-  VIDEO_FORMATS = ['mp4', 'm4v', 'webm', 'ogv']
+  VIDEO_FORMATS = %w[mp4 m4v webm ogv]
 
   # == Relations ==
   has_many :treasures
