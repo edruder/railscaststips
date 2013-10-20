@@ -8,6 +8,7 @@
   .form-group
     = f.label :time
     = f.time_select :time, discard_hour: true, include_seconds: true
+    %p.help-block Set the time (mm:ss) when the tip is shown in the video
   .form-group
     = f.label :tag_list
     = f.text_field :tag_list, style: "width:100%", data: { tags: "#{available_tags}" }
