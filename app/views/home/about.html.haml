@@ -14,12 +14,15 @@
     .row
       .col-md-6
         %h5.subpage-title RailsCasts Tips
-        %p RailsCasts Tips emerges as the need for ... grew over time.
-        %p In fact, many of the features in this site implements tips and knowledge taken from RailsCasts.
-        %p
+        %p.justified
+          Many Rails developers have learned something from Ryan Bates through his RailsCasts, but one screencast tends to deliver more knowledge than described in the title. This project is looking to point forward this extra knowledge. Also, its a way of saying
+          %b "Thank you Ryan".
+        %p.justified In fact, many of the features in this site implements tips and knowledge taken from RailsCasts.
+      .col-md-6.wrapper-1
+        = image_tag 'railscasts_logo.png', alt: 'RailsCasts'
+        %hr
+        %p.justified
           All RailsCasts related material (including videos and image files) belong to
           = link_to 'railscasts.com', 'http://railscasts.com'
           an it's producers.
-      .col-md-6.wrapper-1
-        = image_tag 'railscasts_logo.png', alt: 'RailsCasts'
 
