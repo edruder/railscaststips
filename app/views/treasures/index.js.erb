@@ -1,0 +1,6 @@
+$('#tips').append('<%= j render('treasures_page', treasures_page: @treasures) %>');
+<% if @treasures.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@treasures) %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>
