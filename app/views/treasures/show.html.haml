@@ -1,7 +1,7 @@
 %section
   .container
     %h4.subpage-title
-      = @treasure.railscast.name
+      = railscast_display_name @treasure.railscast
 
     .row
       .col-md-12
@@ -11,25 +11,16 @@
     .row
       .col-md-8.item-description.wrapper-1
         .row
-          .col-md-9
-            %h5.subpage-title Description
-            = @treasure.description
-          .col-md-3
-            %h5
-              - if current_user && current_user.can_vote_for?(@treasure)
-                = link_to vote_treasure_path(@treasure, value: 1), method: "post" do
-                  %i.icon-thumbs-up-alt
-              - else
-                %i.icon-thumbs-up-alt
-              = @treasure.votes
-
+          .col-md-12
+            %h5.subpage-title
+              = @treasure.description
         .row
           .col-md-12
             %h5 Tags
             = tags_for_treasure @treasure
 
       .col-md-4.item-details.wrapper-1
-        %h5.subpage-title Details
+        / %h5.subpage-title Details
         %ul.project-details-list
           %li
             %h6 Found at
@@ -44,12 +35,16 @@
             %h6 Share via twitter
             .project-terms
               = render 'twitter_share_button', treasure: @treasure
-
-    - if current_user && current_user.can_vote_for?(@treasure)
-      = link_to vote_treasure_path(@treasure, value: 1), method: "post" do
-        %i.icon-thumbs-up-alt
-      = link_to vote_treasure_path(@treasure, value: -1), method: "post" do
-        %i.icon-thumbs-down-alt
+          %li
+            %h6 Number of votes
+            .project-terms
+              - if current_user && current_user.can_vote_for?(@treasure)
+                = link_to vote_treasure_path(@treasure, value: 1), method: "post", class: 'btn btn-link' do
+                  %i.icon-thumbs-up-alt
+                  = @treasure.votes
+              - else
+                %i.icon-thumbs-up-alt
+                = @treasure.votes
 
     - if Treasure.related_treasures(@treasure).count > 0
       .panel.panel-default

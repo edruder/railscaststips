@@ -13,6 +13,10 @@ module TreasuresHelper
     time.strftime "%M:%S"
   end
 
+  def railscast_display_name railscast
+    "#{railscast.position} - #{railscast.name}"
+  end
+
   def get_message_for_search search
     case search.type
     when :search_all
@@ -27,4 +31,5 @@ module TreasuresHelper
       "Showing results for '#{search.search_term}'"
     end
   end
+
 end
