@@ -1,4 +1,5 @@
 class RailscastsController < ApplicationController
+  before_filter :admin_user
   before_action :set_railscast, only: [:show, :edit, :update, :destroy]
 
   # GET /railscasts
