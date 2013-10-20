@@ -1,17 +1,15 @@
 .col-md-12
   .row
     .col-md-12
+      = link_to 'Share a New Tip', new_treasure_path, class: 'btn btn-flat flat-inverse btn-rounded btn-block'
+  %hr
+
+  .row
+    .col-md-12
       = form_tag  treasures_path, method: :get, class: 'search-form' do
         = text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search ...'
-
   .row
     .col-md-12
       .widget.tagcloud
         %h5.subpage-title Tag Cloud
         = tag_cloud
-
-  %hr
-
-  .row
-    .col-md-12
-      = link_to 'Add New Tip', new_treasure_path, class: 'btn btn-flat flat-inverse btn-rounded btn-block'

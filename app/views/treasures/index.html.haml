@@ -2,14 +2,14 @@
   .container
     %h4.subpage-title Listing tip
 
-    .bs-callout.bs-callout-warning= get_message_for_search @search
+    = get_message_for_search @search
 
     .col-md-9
       #tips
         - if @treasures.length > 0
           = render 'treasures_page', treasures_page: @treasures
           = paginate @treasures
+      = link_to 'Share a New Tip', new_treasure_path, class: 'btn btn-flat flat-inverse btn-rounded'
 
     .col-md-3
       = render "side_bar"
-
