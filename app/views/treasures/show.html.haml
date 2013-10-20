@@ -5,9 +5,22 @@
 
     .row
       .col-md-12
-        %video#railscast_video.video-js.vjs-default-skin{ controls: "", poster: "#{image_path('video/poster.jpg')}", :preload => "auto", "data-setup" => '{"example_option":true}', width: "960", height: '600', "data-time" => "#{@treasure.at_second}" }
-          - @treasure.railscast.video_urls.each_with_index do |video_url, i|
-            %source{ src: "#{video_url}", :type => "video/#{ Railscast::VIDEO_FORMATS[i] }"}
+        - if @treasure.railscast.pro? or @treasure.railscast.revised?
+          .centered 
+            %hr
+            %h3 This RailsCast needs a subscription
+            =link_to @treasure.railscast.url do
+              = image_tag 'railscasts_pro.png', alt: 'RailsCast PRO', class: 'pro'
+            %h3 We cannot show this video
+            But you can visit 
+            = link_to 'this RailsCast', @treasure.railscast.url
+            in railscasts.com
+            %hr
+
+        - else
+          %video#railscast_video.video-js.vjs-default-skin{ controls: "", poster: "#{image_path('video/poster.jpg')}", :preload => "auto", "data-setup" => '{"example_option":true}', width: "960", height: '600', "data-time" => "#{@treasure.at_second}" }
+            - @treasure.railscast.video_urls.each_with_index do |video_url, i|
+              %source{ src: "#{video_url}", :type => "video/#{ Railscast::VIDEO_FORMATS[i] }"}
 
     .row
       .col-md-8.item-description.wrapper-1
@@ -59,9 +72,9 @@
         - if current_user
           = link_to 'Edit', edit_treasure_path(@treasure), class: 'btn btn-flat flat-inverse btn-rounded'
         = link_to 'Back', treasures_path, class: 'btn btn-warning'
-
-:javascript
-  _V_("#railscast_video").ready(function(){
-    myPlayer = _V_("#railscast_video");
-    myPlayer.on("loadedmetadata", addVideoEvent);
-  });
+- unless @treasure.railscast.pro? or @treasure.railscast.revised?
+  :javascript
+    _V_("#railscast_video").ready(function(){
+      myPlayer = _V_("#railscast_video");
+      myPlayer.on("loadedmetadata", addVideoEvent);
+    });
