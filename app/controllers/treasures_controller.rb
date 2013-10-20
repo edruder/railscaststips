@@ -93,6 +93,4 @@ class TreasuresController < ApplicationController
     def search_treasures
       TreasureSearch.new(params)
     end
-
-
 end
