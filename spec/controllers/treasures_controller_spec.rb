@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TreasuresController do
 
   let(:railscast) { FactoryGirl.create :railscast }
-  let(:valid_attributes) { { railscast_id: railscast.id, description: "MyText", time: Time.now } }
+  let(:valid_attributes) { { railscast_id: railscast.id, description: "MyText", time: '00:2:31' } }
 
   let(:valid_session) { { user_id: FactoryGirl.create(:user, guest: true)} }
 
