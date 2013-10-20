@@ -25,8 +25,6 @@
                   = link_to 'Home', root_path
                 %li{ class: controller.kind_of?(TreasuresController) ? 'active' : '' }
                   = link_to 'Tips', treasures_path
-                %li{ class: controller.kind_of?(RailscastsController) ? 'active' : '' }
-                  = link_to 'RailsCasts', railscasts_path
                 %li
                   = link_to 'About', '#'
                 %li.dropdown
@@ -106,5 +104,5 @@
       rumbleBannerBackgroundColor = "#161616";
       rumbleBannerTextColor = "#ff950e";
       rumbleBannerLinkColor = "#ffffff";
-  
+
     = javascript_include_tag "http://s0.railsrumble.com/banner.js"
