@@ -9,6 +9,7 @@
         - if @treasures.length > 0
           = render 'treasures_page', treasures_page: @treasures
           = paginate @treasures
+      = link_to 'Share a New Tip', new_treasure_path, class: 'btn btn-flat flat-inverse btn-rounded'
 
     .col-md-3
       = render "side_bar"
