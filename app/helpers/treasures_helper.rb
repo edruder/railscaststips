@@ -18,18 +18,23 @@ module TreasuresHelper
   end
 
   def get_message_for_search search
-    case search.type
+    text = case search.type
     when :search_all
       "Showing available Tips"
     when :by_query
-      "Showing results for query '#{search.search_term}'"
+      "Showing results for query #{bold(search.search_term)}"
     when :by_tag
-      "Showing results for tag '#{search.search_term}'"
+      "Showing results for tag #{bold(search.search_term)}"
     when :suggested
-      "Your search for '#{search.failed_search_term}' did not match any documents, instead we're suggesting you to look for '#{search.search_term}' tag."
+      "Your search for '#{search.failed_search_term}' did not match any documents, we're showing results for #{bold(search.search_term)} as a suggestion."
     else
       "Showing results for '#{search.search_term}'"
     end
+    raw text
+  end
+
+  def bold text
+    content_tag :b, text
   end
 
 end
