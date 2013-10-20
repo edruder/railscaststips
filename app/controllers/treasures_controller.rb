@@ -1,5 +1,5 @@
 class TreasuresController < ApplicationController
-  before_filter :logged_user, only: [:create, :update]
+  before_filter :logged_user, only: [:create, :update, :new, :edit]
   before_action :set_treasure, only: [:show, :edit, :update, :destroy]
   before_action :load_railscasts, only: [:new, :create, :edit, :update]
 
