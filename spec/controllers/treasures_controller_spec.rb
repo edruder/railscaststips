@@ -154,7 +154,9 @@ describe TreasuresController do
         it "creates a new Treasure with tags tag1, tag2, tag3" do
           post :create, { treasure: valid_attributes.merge( { tag_list: "tag1, tag2, tag3" } ) }, valid_session
           assigns(:treasure).should be_persisted
-          assigns(:treasure).tag_list.should eq(["tag1", "tag2", "tag3"])
+          assigns(:treasure).tag_list.should include("tag1")
+          assigns(:treasure).tag_list.should include("tag2")
+          assigns(:treasure).tag_list.should include("tag3")
         end
       end
     end
