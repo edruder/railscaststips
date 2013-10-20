@@ -9,7 +9,7 @@ class Railscast < ActiveRecord::Base
   has_many :treasures
 
   # == Validations ==
-  validates :url, :name, :description, :position, :permalink, presence: true
+  validates :url, :name, :description, :position, :permalink, :duration, presence: true
   validates :url, :name, uniqueness: true
 
   # == Methods ==
@@ -46,6 +46,10 @@ class Railscast < ActiveRecord::Base
   end
 
   def duration_in_seconds
-    "00:#{duration}".to_time.seconds_since_midnight
+    duration_full_string.to_time.seconds_since_midnight
+  end
+
+  def duration_full_string
+    duration.scan(':').count > 1 ? duration : "0:#{duration}"
   end
 end
