@@ -41,4 +41,16 @@ describe Railscast do
       railscast.image_url.should == 'http://railscasts.com/static/episodes/stills/123-index.png'
     end
   end
+
+  describe "#out_of_duration?" do
+    let(:railscast) { FactoryGirl.build :railscast, duration: '12:34' }
+      
+    it "returns true if time is after duration" do
+      railscast.out_of_duration?('0:12:35'.to_time).should == true
+    end
+
+    it "returns true if time is before duration" do
+      railscast.out_of_duration?('0:12:33'.to_time).should == false
+    end
+  end # describe #out_of_duration?
 end

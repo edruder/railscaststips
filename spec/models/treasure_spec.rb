@@ -12,6 +12,18 @@ describe Treasure do
 
   it { should ensure_length_of(:description).is_at_most(150) }
 
+  it "accepts the time if fits the railscast's duration" do
+    railscast = FactoryGirl.create :railscast, duration: '0:12:32'
+    treasure = FactoryGirl.build :treasure, time: '0:12:31', railscast: railscast
+    treasure.should have(:no).error_on(:time)
+  end
+
+  it "does not accept the time if fits the railscast's duration" do
+    railscast = FactoryGirl.create :railscast, duration: '0:12:32'
+    treasure = FactoryGirl.build :treasure, time: '0:12:33', railscast: railscast
+    treasure.should have(1).error_on(:time)
+  end
+
   describe '#at_second' do
     it 'caluclates amount of seconds' do
       treasure = FactoryGirl.create :treasure, time: Time.parse('00:02:26')
