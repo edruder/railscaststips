@@ -35,9 +35,17 @@ class Railscast < ActiveRecord::Base
     "#{formatted_position} - #{name}"
   end
 
+  def out_of_duration?(time)
+    time.seconds_since_midnight > duration_in_seconds
+  end
+
   private # ========================= PRIVATE =========================== #
 
   def formatted_position
     "%03d" % position
+  end
+
+  def duration_in_seconds
+    "00:#{duration}".to_time.seconds_since_midnight
   end
 end
