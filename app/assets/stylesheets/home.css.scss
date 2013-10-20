@@ -10,6 +10,9 @@
     font-size: 50px;
     color: #464646;
   }
+  h2 {
+    color: #464646;
+  }
   p {
     color: #464646;
   }
@@ -19,5 +22,12 @@
       height: 39px;
     }
   }
+}
 
+.pricing .p-footer{
+  p{
+    font-weight: bold;
+    font-size: 1.1em;
+    color: darken(#95a5a6, 30);
+  }
 }

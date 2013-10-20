@@ -66,6 +66,44 @@ describe Treasure do
     end
   end
 
+  describe '.most_voted' do
+    before :each do
+      generate_treasures_with_votes
+    end
+
+    it 'returns de most voted treasure' do
+      Treasure.most_voted.should == @t2
+    end
+  end
+
+  describe '.most_recent' do
+
+    it 'returns the most recent treasure' do
+      @user = FactoryGirl.create :user
+      railscast = FactoryGirl.create :railscast
+      @t1 = FactoryGirl.create :treasure, railscast: railscast, created_at: 3.days.ago 
+      @t2 = FactoryGirl.create :treasure, railscast: railscast, created_at: 2.days.ago 
+      @t3 = FactoryGirl.create :treasure, railscast: railscast, created_at: 1.day.ago
+      Treasure.most_recent.should == @t3
+    end
+
+  end
+
+  describe '.most_tagged' do
+    before :each do
+      @user = FactoryGirl.create :user
+      railscast = FactoryGirl.create :railscast
+      @t1 = FactoryGirl.create :treasure, railscast: railscast, tag_list: 'tag 2'
+      @t2 = FactoryGirl.create :treasure, railscast: railscast, tag_list: 'tag 1, tag 2, tag 3'
+      @t3 = FactoryGirl.create :treasure, railscast: railscast, tag_list: 'tag 1, tag 3'
+    end
+
+    it 'returns the most recent treasure' do
+      Treasure.most_tagged.should == @t2
+    end
+
+  end
+
   describe '#votes' do
     before :each do
       generate_treasures_with_votes

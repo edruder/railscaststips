@@ -1,8 +1,10 @@
 # for twitter api 1.1
 
+TWITTER_CONFIG = YAML.load_file("#{::Rails.root}/config/twitter.yml")[::Rails.env]
+
 Twitter.configure do |config|
-  config.consumer_key       = 'qcxnPqZ00PJfhInbVEd1g'
-  config.consumer_secret    = '3cZcuPMkQ7m1t1E0bwiVTuovwxEsaOEi2QBxmWcZM'
-  config.oauth_token        = '266931551-zAHqL8c6DUWbFj2Z2in5IU6K1cae1Ax2jdAwmG0y'
-  config.oauth_token_secret = 'ldrzoTaKhlptmgtRswhy8FgG6BRv4XwsVFO5AUgOFo'
+  config.consumer_key       = TWITTER_CONFIG['consumer_key']
+  config.consumer_secret    = TWITTER_CONFIG['consumer_secret']
+  config.oauth_token        = TWITTER_CONFIG['oauth_token']
+  config.oauth_token_secret = TWITTER_CONFIG['oauth_token_secret']
 end

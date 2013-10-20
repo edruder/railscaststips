@@ -1,0 +1,17 @@
+development:
+  consumer_key: be6471329d3c33ef9abd
+  consumer_secret: 773ba8505d038db07dccc1b5f3040f32c2b076ce
+  oauth_token: be6471329d3c33ef9abd
+  oauth_token_secret: 773ba8505d038db07dccc1b5f3040f32c2b076ce
+
+test:
+  consumer_key: be6471329d3c33ef9abd
+  consumer_secret: 773ba8505d038db07dccc1b5f3040f32c2b076ce
+  oauth_token: be6471329d3c33ef9abd
+  oauth_token_secret: 773ba8505d038db07dccc1b5f3040f32c2b076ce
+
+production:
+  consumer_key: be6471329d3c33ef9abd
+  consumer_secret: 773ba8505d038db07dccc1b5f3040f32c2b076ce
+  oauth_token: be6471329d3c33ef9abd
+  oauth_token_secret: 773ba8505d038db07dccc1b5f3040f32c2b076ce

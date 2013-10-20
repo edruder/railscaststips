@@ -10,7 +10,6 @@
       %header.header
         %nav.navbar.navbar-default{:role => "navigation"}
           .container
-            / Brand and toggle get grouped for better mobile display
             .navbar-header
               %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
                 %span.sr-only Toggle navigation
@@ -20,14 +19,13 @@
               = link_to root_path, class: 'navbar-brand' do
                 Rails
                 %span Casts Tips.
-            / Collect the nav links, forms, and other content for toggling
             .collapse.navbar-collapse.navbar-ex1-collapse
               %ul.nav.navbar-nav
-                %li.active
-                  = link_to 'Home', '#'
-                %li
+                %li{ class: controller.kind_of?(HomeController) ? 'active' : '' }
+                  = link_to 'Home', root_path
+                %li{ class: controller.kind_of?(TreasuresController) ? 'active' : '' }
                   = link_to 'Tips', treasures_path
-                %li
+                %li{ class: controller.kind_of?(RailscastsController) ? 'active' : '' }
                   = link_to 'RailsCasts', railscasts_path
                 %li
                   = link_to 'FAQ', '#'
@@ -49,7 +47,18 @@
                         = link_to "/auth/github" do
                           %i.icon-github
                           Github
-
+    - if notice or alert
+      - if notice
+        .container
+          .alert.alert-success.fade.in
+            %a.close{href: '#', data:{ dismiss:"alert" }, 'aria-hidden'=> true} &times;
+            = notice
+      - if alert
+        %section
+          .container
+            .alert.alert-danger.fade.in
+              %a.close{href: '#', data:{ dismiss:"alert" }, 'aria-hidden'=> true} &times;
+              = alert
 
     = yield :main_search
 
@@ -81,7 +90,7 @@
               RailsCasts Tips© 2013.
               %br
               Built for 2013
-              = link_to 'Rails Rumble', 'http://railsrumble.com'
+              = link_to image_tag('railsrumble_small.png'), 'http://railsrumble.com', alt: 'Rails Rumble'
               %br
               &copy;
               = link_to 'LogicalBricks Solutions', 'http://logicalbricks.com'

@@ -11,7 +11,7 @@
               %span.input-group-btn
                 = submit_tag "Search!", name: nil, class: "btn btn-default"
       %h1 or
-      %h2 if you find a useful tip hidden on a RailsCasts
+      %h2 if you find a useful tip on a RailsCasts
       = link_to new_treasure_path, class: 'btn btn-lg btn-info' do
         %i.icon-plus
         Add A New Tip
@@ -20,4 +20,4 @@
     .row
       = render 'featured_box', treasure: @treasures[0], title: 'Most Voted'
       = render 'featured_box', treasure: @treasures[1], title: 'Most Tagged'
-      = render 'featured_box', treasure: @treasures[2], title: 'Most Tipped'
+      = render 'featured_box', treasure: @treasures[2], title: 'Most Recent'
