@@ -2,7 +2,8 @@ class Treasure < ActiveRecord::Base
   
   # == Validations ==
   validates :description, :time, :railscast, presence: true
-  validates_length_of :description, maximum: 150, allow_blank: false
+  validates :description, length: { maximum: 150 }
+  validate :time_fits_duration
 
   # == Associations ==
   belongs_to :railscast, counter_cache: true
@@ -59,4 +60,9 @@ class Treasure < ActiveRecord::Base
     read_attribute(:votes) || treasure_votes.sum(:value)
   end
 
+  private # =========================== PRIVATE ============================= #
+
+  def time_fits_duration
+    errors.add :time, 'is out of duration' if time and railscast and railscast.out_of_duration? time
+  end
 end

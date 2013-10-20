@@ -10,7 +10,6 @@
       %header.header
         %nav.navbar.navbar-default{:role => "navigation"}
           .container
-            / Brand and toggle get grouped for better mobile display
             .navbar-header
               %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
                 %span.sr-only Toggle navigation
@@ -20,7 +19,6 @@
               = link_to root_path, class: 'navbar-brand' do
                 Rails
                 %span Casts.
-            / Collect the nav links, forms, and other content for toggling
             .collapse.navbar-collapse.navbar-ex1-collapse
               %ul.nav.navbar-nav
                 %li.active
@@ -31,15 +29,25 @@
                   = link_to 'RailsCasts', railscasts_path
                 %li
                   = link_to 'FAQ', '#'
-                - if current_user
-                  %li= "Hello #{current_user.username}!"
-                  %li= link_to "Sign in with Github", "/auth/github" if current_user.guest
-                  %li= link_to 'Sign out', signout_path
-                - else
-                  %li
-                    = link_to 'Try it!', tryit_path
-                  %li
-                    = link_to "Sign in with Github", "/auth/github"
+                %li.dropdown
+                  = link_to 'Login', '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' }
+                  %ul.dropdown-menu
+                    - if current_user
+                      %li= link_to "Hi #{current_user.username}!", "https://github.com/#{current_user.username}"
+                      - if current_user.guest?
+                        %li
+                          = link_to "/auth/github" do
+                            %i.icon-github
+                            Github
+                      %li= link_to 'Logout', signout_path
+                    - else
+                      %li
+                        = link_to 'Try it!', tryit_path
+                      %li
+                        = link_to "/auth/github" do
+                          %i.icon-github
+                          Github
+
 
     = yield :main_search
 
@@ -71,7 +79,7 @@
               RailsCasts Tips© 2013.
               %br
               Built for 2013
-              = link_to 'Rails Rumble', 'http://railsrumble.com'
+              = link_to image_tag('railsrumble_small.png'), 'http://railsrumble.com', alt: 'Rails Rumble'
               %br
               &copy;
               = link_to 'LogicalBricks Solutions', 'http://logicalbricks.com'
