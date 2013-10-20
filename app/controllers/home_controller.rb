@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @treasures = [Treasure.all.sample, Treasure.all.sample, Treasure.all.sample]
+    @treasures = [Treasure.most_voted, Treasure.most_tagged, Treasure.most_recent]
   end
 
   def tweets

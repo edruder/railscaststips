@@ -40,6 +40,21 @@ class Treasure < ActiveRecord::Base
     order('votes desc')
   end
 
+  def self.most_voted
+    by_votes.first
+  end
+
+  def self.most_recent
+    self.order('created_at DESC').first
+  end
+
+  def self.most_tagged
+    select("treasures.*, COUNT(tags.id) as number_of_tags").
+    joins(:tags).
+    group('treasures.id').
+    order("number_of_tags DESC").first
+  end
+
   def votes
     read_attribute(:votes) || treasure_votes.sum(:value)
   end
