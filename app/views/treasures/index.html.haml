@@ -2,10 +2,13 @@
   .container
     %h4.subpage-title Listing tip
 
-    - @treasures.each_slice(3) do |treasures|
+    .alert.alert-warning
+      = get_message_for_search @search
+
+    - @search.result.each_slice(3) do |treasures|
       .row
         - treasures.each do |treasure|
           = render "box", treasure: treasure
 
 
-    = link_to 'Add Tip', new_treasure_path
+    = link_to 'Add Tip', new_treasure_path, class: 'btn btn-primary'

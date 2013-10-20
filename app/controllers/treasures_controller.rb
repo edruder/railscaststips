@@ -6,7 +6,7 @@ class TreasuresController < ApplicationController
   # GET /treasures
   # GET /treasures.json
   def index
-    @treasures = load_treasures
+    @search = search_treasures
   end
 
   # POST /treasures/1/vote
@@ -89,17 +89,9 @@ class TreasuresController < ApplicationController
       params.require(:treasure).permit(:description, :railscast_id, :time, :tag_list)
     end
 
-    def suggested_treasures
-      Treasure.all
+    def search_treasures
+      TreasureSearch.new(params)
     end
 
-    def load_treasures
-      if params[:query]
-        Treasure.search params[:query]
-      elsif params[:tag]
-        Treasure.tagged_with params[:tag]
-      else
-        suggested_treasures
-      end
-    end
+    
 end
