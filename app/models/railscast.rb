@@ -9,7 +9,7 @@ class Railscast < ActiveRecord::Base
   has_many :treasures
 
   # == Validations ==
-  validates :url, :name, :description, :position, :permalink, presence: true
+  validates :url, :name, :description, :position, :permalink, :duration, presence: true
   validates :url, :name, uniqueness: true
 
   # == Methods ==
@@ -35,9 +35,21 @@ class Railscast < ActiveRecord::Base
     "#{formatted_position} - #{name}"
   end
 
+  def out_of_duration?(time)
+    time.seconds_since_midnight > duration_in_seconds
+  end
+
   private # ========================= PRIVATE =========================== #
 
   def formatted_position
     "%03d" % position
+  end
+
+  def duration_in_seconds
+    duration_full_string.to_time.seconds_since_midnight
+  end
+
+  def duration_full_string
+    duration.scan(':').count > 1 ? duration : "0:#{duration}"
   end
 end

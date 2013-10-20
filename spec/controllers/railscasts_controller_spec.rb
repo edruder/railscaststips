@@ -10,6 +10,7 @@ describe RailscastsController do
       pro: '1',
       revised: '0',
       position: 1,
+      duration: '0:14:21',
       permalink: 'caching-with-instance-variables'
     }
   }
