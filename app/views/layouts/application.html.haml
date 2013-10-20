@@ -92,11 +92,10 @@
             %p
               RailsCasts Tips© 2013.
               %br
-              Built for 2013
-              = link_to image_tag('railsrumble_small.png'), 'http://railsrumble.com', alt: 'Rails Rumble'
-              %br
               &copy;
               = link_to 'LogicalBricks Solutions', 'http://logicalbricks.com'
+              %br
+              = link_to image_tag('rails-rumble-badge-2013.png', width: '140px', heigth: '54px'), 'http://railsrumble.com', alt: 'Rails Rumble'
           .col-xs-6.social-link-wrapper
             %ul.social-links
               %li
@@ -105,3 +104,11 @@
               %li
                 %a{:href => 'https://twitter.com/RailsCastsTips'}
                   %i.icon-twitter
+
+    :javascript
+      var rumbleBannerBackgroundColor, rumbleBannerTextColor, rumbleBannerLinkColor, rumbleBannerPlacement;
+      rumbleBannerBackgroundColor = "#161616";
+      rumbleBannerTextColor = "#ff950e";
+      rumbleBannerLinkColor = "#ffffff";
+  
+    = javascript_include_tag "http://s0.railsrumble.com/banner.js"                    
