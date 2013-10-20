@@ -15,7 +15,7 @@ describe RailscastsController do
     }
   }
 
-  let(:valid_session) { { } }
+  let(:valid_session) { { user_id: FactoryGirl.create(:user, guest: true, admin: true)} }
   describe "GET index" do
     it "assigns all railscasts as @railscasts" do
       railscast = Railscast.create! valid_attributes

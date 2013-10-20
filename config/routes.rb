@@ -1,7 +1,7 @@
 R13Team376::Application.routes.draw do
   get 'tags/:tag', to: 'treasures#index', as: :tag
   resources :railscasts
-  resources :treasures do
+  resources :treasures, path: 'tips' do
     member { post :vote }
   end
 
