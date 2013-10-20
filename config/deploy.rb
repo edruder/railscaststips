@@ -39,6 +39,7 @@ namespace :deploy do
   task :symlink_config, roles: :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/config/github.yml #{release_path}/config/github.yml"
+    run "ln -nfs #{shared_path}/config/twitter.yml #{release_path}/config/twitter.yml"
   end
   after "deploy:finalize_update", "deploy:symlink_config"
 
