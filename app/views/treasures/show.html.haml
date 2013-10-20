@@ -52,25 +52,8 @@
               = render 'twitter_share_button', treasure: @treasure
 
     - if Treasure.related_treasures(@treasure).count > 0
-      .panel.panel-default
-        .panel-heading Other treasures found in this Railscast
-
-        %table.table.table-hover
-          %thead
-            %tr
-              %th Tags
-              %th Description
-              %th Found at
-          %tbody
-            - Treasure.related_treasures(@treasure).each do |treasure|
-              %tr
-                %td= treasure.tag_list
-                %td= treasure.description
-                %td
-                  = link_to treasure, class: 'btn-link' do
-                    %i.icon-link
-                    = found_at(treasure.time)
-
+      = render "related_tips"
+      
     .actions
       .pull-right
         - if current_user

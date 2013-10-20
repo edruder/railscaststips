@@ -1,0 +1,18 @@
+.widget    
+  %h5.subpage-title Other Tips found in this Railscast
+  .tip-related-table
+    .row.tip-related-table-head
+      .col-md-12
+        .col-md-3 Tags
+        .col-md-8 Description
+        .col-md-1 Found at
+          
+    - Treasure.related_treasures(@treasure).each do |treasure|
+      .row.tip-related
+        .col-md-12
+          .col-md-3= treasure.tag_list
+          .col-md-8= treasure.description
+          .col-md-1
+            = link_to treasure, class: 'btn-link' do
+              %i.icon-link
+              = found_at(treasure.time)
