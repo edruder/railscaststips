@@ -13,4 +13,8 @@ module TreasuresHelper
     time.strftime "%M:%S"
   end
 
+  def railscast_display_name railscast
+    "#{railscast.position} - #{railscast.name}"
+  end
+
 end
