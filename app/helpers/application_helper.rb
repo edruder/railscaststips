@@ -24,4 +24,9 @@ module ApplicationHelper
     base_url + params.to_query
   end
 
+  def menu_item(text, url, options={})
+    content_tag :li, class: (url == request.fullpath) ? 'active' : '' do
+      link_to text, url
+    end
+  end
 end
