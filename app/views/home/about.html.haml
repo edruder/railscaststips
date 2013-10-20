@@ -1,8 +1,25 @@
+%section.page-title-wrapper
+  .container
+    .row
+      .col-xs-12.col-sm-6.col-md-6.page-title
+        %h4 About
+      .col-xs-6.hidden-xs.breadcrumb-wrapper
+        %ol.breadcrumb.pull-right
+          %li
+            = link_to 'Home', root_path
+          %li.active About
+
 %section
   .container
-    %h1 RailsCasts Tips
-
-    %p The most of Rails Developers:w
-
-    %h2
+    .row
+      .col-md-6
+        %h5.subpage-title RailsCasts Tips
+        %p RailsCasts Tips emerges as the need for ... grew over time.
+        %p In fact, many of the features in this site implements tips and knowledge taken from RailsCasts.
+        %p
+          All RailsCasts related material (including videos and image files) belong to
+          = link_to 'railscasts.com', 'http://railscasts.com'
+          an it's producers.
+      .col-md-6.wrapper-1
+        = image_tag 'railscasts_logo.png', alt: 'RailsCasts'
 
