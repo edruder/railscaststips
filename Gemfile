@@ -64,4 +64,4 @@ end
 
 gem 'omniauth-github'
 gem 'whenever', require: false
-gem 'kaminari'
+gem 'will_paginate'

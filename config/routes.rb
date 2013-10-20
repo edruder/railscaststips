@@ -8,7 +8,7 @@ R13Team376::Application.routes.draw do
   end
 
   get "home/index"
-  get "about" => "home#about"
+  get "/about" => "home#about", as: :about
   get "/faq" => "home#faq", as: :faq
 
   root 'home#index'

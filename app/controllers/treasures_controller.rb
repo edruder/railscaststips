@@ -7,7 +7,7 @@ class TreasuresController < ApplicationController
   # GET /tips.json
   def index
     @search = search_treasures
-    @treasures = @search.result.page(params[:page]).per(6)
+    @treasures = @search.result.page(params[:page]).per_page(6)
   end
 
   # POST /tips/1/vote

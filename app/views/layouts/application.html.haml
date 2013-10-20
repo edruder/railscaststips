@@ -32,6 +32,8 @@
                     = link_to 'RailsCasts', railscasts_path
                 %li{ class: (controller.kind_of?(HomeController) and action_name == 'faq') ? 'active' : '' }
                   = link_to 'FAQ', faq_path
+                %li
+                  = link_to 'About', about_path
                 %li.dropdown
                   = link_to 'Login', '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' }
                   %ul.dropdown-menu
@@ -75,7 +77,9 @@
               %span.footer-brand
                 Rails
                 %span Casts Tips.
-              %p Many of the Rails developers have learned something with the Ryan Bates' RailsCasts, but one screencast has more knowledge that the title describe. This project is looking for contain this extra knowledge. And this application is a way to say "Thank you Ryan".
+              %p
+                Many Rails developers have learned something from Ryan Bates through his RailsCasts, but one screencast tends to deliver more knowledge than described in the title. This project is looking to point forward this extra knowledge. Also, its a way of saying
+                %b "Thank you Ryan".
           .col-md-4
             - unless controller_name == 'treasures' and action_name == 'show'
               .widget.popular-posts
