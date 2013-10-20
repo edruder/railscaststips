@@ -47,7 +47,18 @@
                         = link_to "/auth/github" do
                           %i.icon-github
                           Github
-
+    - if notice or alert
+      - if notice
+        .container
+          .alert.alert-success.fade.in
+            %a.close{href: '#', data:{ dismiss:"alert" }, 'aria-hidden'=> true} &times;
+            = notice
+      - if alert
+        %section
+          .container
+            .alert.alert-danger.fade.in
+              %a.close{href: '#', data:{ dismiss:"alert" }, 'aria-hidden'=> true} &times;
+              = alert
 
     = yield :main_search
 
