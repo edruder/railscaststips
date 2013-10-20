@@ -5,7 +5,7 @@
     .alert.alert-warning
       = get_message_for_search @search
 
-    - @search.result.each_slice(3) do |treasures|
+    - @treasures.each_slice(3) do |treasures|
       .row
         - treasures.each do |treasure|
           = render "box", treasure: treasure

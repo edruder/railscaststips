@@ -7,6 +7,7 @@ class TreasuresController < ApplicationController
   # GET /treasures.json
   def index
     @search = search_treasures
+    @treasures = @search.result
   end
 
   # POST /treasures/1/vote
