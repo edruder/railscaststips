@@ -3,6 +3,7 @@ class Railscast < ActiveRecord::Base
   # == Constants ==
   VIDEO_BASE_URL = 'http://media.railscasts.com/assets/episodes/videos/'
   IMAGE_BASE_URL = 'http://railscasts.com/static/episodes/stills/'
+  VIDEO_FORMATS = ['mp4', 'm4v', 'webm', 'ogv']
 
   # == Relations ==
   has_many :treasures
@@ -13,9 +14,9 @@ class Railscast < ActiveRecord::Base
 
   # == Methods ==
 
-  def video_url
-    return '' if pro or revised
-    VIDEO_BASE_URL + generate_basename + '.mp4'
+  def video_urls
+    return [] if pro or revised
+    VIDEO_FORMATS.collect { |vf| "#{ VIDEO_BASE_URL }#{ generate_basename }.#{ vf }" }
   end
 
   def image_url
