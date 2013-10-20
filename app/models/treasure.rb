@@ -24,6 +24,7 @@ class Treasure < ActiveRecord::Base
   # == Callbacks ==
   before_validation :normalize_time
   before_save :add_railscast_tag
+  after_initialize :reset_time
 
   # == Methods ==
   def at_second
@@ -82,5 +83,9 @@ class Treasure < ActiveRecord::Base
       Time::DATE_FORMATS[:ms] = "%M:%S"
       self.time = "0:#{time.to_formatted_s(:ms)}".to_time
     end
+  end
+
+  def reset_time
+    self.time = "0:0:0".to_time unless time.present?
   end
 end
