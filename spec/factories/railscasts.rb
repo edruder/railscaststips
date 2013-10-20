@@ -7,5 +7,6 @@ FactoryGirl.define do
     description "A description"
     sequence(:position) { |n| n }
     permalink 'fixture'
+    duration "0:10:12"
   end
 end
