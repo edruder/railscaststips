@@ -1,0 +1,5 @@
+.page
+  - treasures_page.each_slice(3) do |treasures|
+    .row
+      - treasures.each do |treasure|
+        = render "box", treasure: treasure
