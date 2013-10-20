@@ -4,7 +4,11 @@ class RailscastsController < ApplicationController
   # GET /railscasts
   # GET /railscasts.json
   def index
-    @railscasts = Railscast.all
+    if current_user && current_user.admin?
+      @railscasts = Railscast.all
+    else
+      @railscasts = Railscast.page(params[:page])
+    end
   end
 
   # GET /railscasts/1
