@@ -78,9 +78,6 @@ GEM
     json (1.8.1)
     jwt (0.1.8)
       multi_json (>= 1.5)
-    kaminari (0.14.1)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     kgio (2.8.1)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -198,6 +195,7 @@ GEM
     whenever (0.8.4)
       activesupport (>= 2.3.4)
       chronic (>= 0.6.3)
+    will_paginate (3.0.5)
 
 PLATFORMS
   ruby
@@ -211,7 +209,6 @@ DEPENDENCIES
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails
-  kaminari
   omniauth-github
   pg
   pg_search
@@ -226,3 +223,4 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   unicorn
   whenever
+  will_paginate
