@@ -1,6 +1,11 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+loadInfiniteScroll = ->
+  $("#tips").infinitescroll
+    navSelector: "nav.pagination"
+    nextSelector: "nav.pagination a[rel=next]"
+    itemSelector: "#tips"
 
 $(window).load ->
   return unless $("#railscast_video").length
@@ -34,4 +39,7 @@ loadTreasureForm = ->
 
 $(document).ready(loadTreasureForm)
 $(document).on('page:load', loadTreasureForm)
+
+$(document).ready(loadInfiniteScroll)
+$(document).on('page:load', loadInfiniteScroll)
 

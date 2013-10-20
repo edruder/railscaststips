@@ -5,10 +5,11 @@
     .bs-callout.bs-callout-warning= get_message_for_search @search
 
     .col-md-9
-      - @treasures.each_slice(3) do |treasures|
-        .row
-          - treasures.each do |treasure|
-            = render "box", treasure: treasure
+      #tips
+        - if @treasures.length > 0
+          = render 'treasures_page', treasures_page: @treasures
+          = paginate @treasures
 
     .col-md-3
       = render "side_bar"
+
